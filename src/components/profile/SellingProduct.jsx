@@ -1,8 +1,10 @@
-import axios from "axios";
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import createProductAction from "../../config/redux/actions/createProductAction";
 
 const SellingProduct = () => {
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -30,30 +32,7 @@ const SellingProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", data.name);
-    formData.append("stock", data.stock);
-    formData.append("price", data.price);
-    formData.append("photo", photo);
-    formData.append("description", data.description);
-    formData.append("id_category", data.id_category);
-    axios
-      .post("http://localhost:2525/products", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        alert("product created");
-        setShow(false);
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log(err);
-        alert(err);
-        setShow(false);
-      });
+    dispatch(createProductAction(data, photo, setShow));
   };
 
   return (
@@ -120,14 +99,79 @@ const SellingProduct = () => {
                 />
                 <br />
                 <h6>Category</h6>
-                <input
+                <div
+                  className="btn-group btn-group-toggle"
+                  data-toggle="buttons"
+                >
+                  <label
+                    className="btn"
+                  >
+                    <input
+                      type="radio"
+                      name="id_category"
+                      id="option1"
+                      onChange={handleChange}
+                      value={"1"}
+                    />{" "}
+                    T-Shirt
+                  </label>
+                  <label
+                    className="btn"
+                  >
+                    <input
+                      type="radio"
+                      name="id_category"
+                      id="option2"
+                      onChange={handleChange}
+                      value={"2"}
+                    />{" "}
+                    Short
+                  </label>
+                  <label
+                    className="btn"
+                  >
+                    <input
+                      type="radio"
+                      name="id_category"
+                      id="option3"
+                      onChange={handleChange}
+                      value={"3"}
+                    />{" "}
+                    Pants
+                  </label>
+                  <label
+                    className="btn"
+                  >
+                    <input
+                      type="radio"
+                      name="id_category"
+                      id="option4"
+                      onChange={handleChange}
+                      value={"4"}
+                    />{" "}
+                    Jacket
+                  </label>
+                  <label
+                    className="btn"
+                  >
+                    <input
+                      type="radio"
+                      name="id_category"
+                      id="option4"
+                      onChange={handleChange}
+                      value={"5"}
+                    />{" "}
+                    Shoes
+                  </label>
+                </div>
+                {/* <input
                   type="text"
                   className="form-control mt-3"
-                  placeholder="id_category"
+                  placeholder="category"
                   name="id_category"
                   value={data.id_category}
                   onChange={handleChange}
-                />
+                /> */}
               </div>
             </section>
           </div>

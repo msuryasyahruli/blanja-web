@@ -1,12 +1,9 @@
-// import axios from "axios";
+import axios from "axios";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import createProductAction from "../../config/redux/actions/createProductAction";
-import { useDispatch } from "react-redux";
 
 function ModalCreate() {
-  const dispatch = useDispatch()
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -34,7 +31,30 @@ function ModalCreate() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createProductAction(data, photo, setShow))
+    const formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("stock", data.stock);
+    formData.append("price", data.price);
+    formData.append("photo", photo);
+    formData.append("description", data.description);
+    formData.append("id_category", data.id_category);
+    axios
+      .post("http://localhost:2525/products", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        alert("product created");
+        setShow(false);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(err);
+        setShow(false);
+      });
   };
 
   return (

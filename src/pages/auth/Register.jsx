@@ -65,7 +65,7 @@ const Register = () => {
             data-toggle="buttons"
             style={{ width: "250px", margin: "0 auto" }}
           >
-            <label className="btn btn-secondary" style={{ width: "50%" }}>
+            <label className="btn" style={{ width: "50%", backgroundColor: "#db3022" }}>
               <input
                 type="radio"
                 name="role"
@@ -75,7 +75,7 @@ const Register = () => {
               />{" "}
               Costumer
             </label>
-            <label className="btn btn-secondary" style={{ width: "50%" }}>
+            <label className="btn" style={{ width: "50%", backgroundColor: "#efefef" }}>
               <input
                 type="radio"
                 name="role"
@@ -149,7 +149,7 @@ const Register = () => {
                 </p>
               </div>
             </div>
-            <div className="tab-pane fade" id="seller">
+            {/* <div className="tab-pane fade" id="seller">
               <div className={`${style.register}`}>
                 <input
                   type="text"
@@ -187,7 +187,7 @@ const Register = () => {
                   </span>
                 </p>
               </div>
-            </div>
+            </div> */}
           </section>
         </section>
       </div>

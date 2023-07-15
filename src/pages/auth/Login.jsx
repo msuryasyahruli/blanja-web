@@ -28,7 +28,7 @@ const Login = () => {
         navigate("/home");
       })
       .catch((err) => {
-        alert("Akun tidak ada")
+        alert("Account doesn't exist")
         console.log(err);
       });
   };
@@ -58,10 +58,10 @@ const Login = () => {
           <div className={`${style.text}`}>
             <p>Please login with your account</p>
           </div>
-          <ul
+          {/* <ul
             className="nav nav-pills mb-3 justify-content-center"
             role="tablist"
-          >
+          > */}
             {/* <li className="nav-item">
               <button
                 className="nav-link active"
@@ -82,7 +82,7 @@ const Login = () => {
                 Seller
               </button>
             </li> */}
-          </ul>
+          {/* </ul> */}
           <section className="tab-content">
             <div className="tab-pane fade show active" id="customer">
               <div className={`${style.register}`}>
