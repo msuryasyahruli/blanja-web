@@ -1,0 +1,137 @@
+.body {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+}
+
+.text {
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  padding: 25px 0px;
+}
+
+.register {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px 0px;
+}
+
+.register input {
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 401px;
+  height: 48px;
+  border-radius: 5px;
+  background: #efefef;
+  border: 0px;
+  outline: none;
+  margin: 10px;
+}
+
+.Forgot {
+  display: flex;
+  justify-content: center;
+}
+
+.Forgot a {
+  display: flex;
+  justify-content: flex-end;
+  font-weight: 400px;
+  font-size: 14px;
+  line-height: 14px;
+  color: #db3022;
+  width: 400px;
+  text-decoration: none;
+  margin: 10px;
+}
+
+.Forgot a:hover {
+  color: #db3022;
+  text-decoration: none;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0px;
+}
+
+.button button {
+  width: 401px;
+  height: 48px;
+  border: 0;
+  border-radius: 25px;
+  font-size: medium;
+  color: white;
+  background-color: #db3022;
+}
+
+.button button:hover {
+  background-color: #cd2617;
+}
+
+.toRegist {
+  display: flex;
+  justify-content: center;
+  color: #222222;
+}
+
+span a {
+  color: #db3022;
+  text-decoration: none;
+}
+
+span a:hover {
+  color: #db3022;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 576px) {
+  .container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .text {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    padding: 25px 0px;
+  }
+
+  .register input {
+    width: 301px;
+    height: 48px;
+  }
+
+  .button button {
+    width: 301px;
+    height: 48px;
+  }
+
+  .Forgot a {
+    width: 300px;
+  }
+
+  .toRegist {
+    font-size: 14px;
+  }
+}

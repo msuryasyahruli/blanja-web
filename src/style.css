@@ -1,0 +1,10 @@
+
+#promotionIndicators {
+    margin: 20px 15%;
+}
+
+@media only screen and (max-width: 767px) {
+    #promotionIndicators {
+        margin: 10px 0;
+    }
+}
