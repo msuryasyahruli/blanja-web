@@ -5,9 +5,6 @@ import createProductAction from "../../config/redux/actions/createProductAction"
 
 const SellingProduct = () => {
   const dispatch = useDispatch();
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const [data, setData] = useState({
     name: "",
     stock: "",
@@ -32,7 +29,7 @@ const SellingProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createProductAction(data, photo, setShow));
+    dispatch(createProductAction(data, photo));
   };
 
   return (
@@ -99,79 +96,21 @@ const SellingProduct = () => {
                 />
                 <br />
                 <h6>Category</h6>
-                <div
-                  className="btn-group btn-group-toggle"
-                  data-toggle="buttons"
-                >
-                  <label
-                    className="btn"
+                <div class="form-group">
+                  <select
+                    class="form-control"
+                    name="id_category"
+                    value={data.id_category}
+                    onChange={handleChange}
                   >
-                    <input
-                      type="radio"
-                      name="id_category"
-                      id="option1"
-                      onChange={handleChange}
-                      value={"1"}
-                    />{" "}
-                    T-Shirt
-                  </label>
-                  <label
-                    className="btn"
-                  >
-                    <input
-                      type="radio"
-                      name="id_category"
-                      id="option2"
-                      onChange={handleChange}
-                      value={"2"}
-                    />{" "}
-                    Short
-                  </label>
-                  <label
-                    className="btn"
-                  >
-                    <input
-                      type="radio"
-                      name="id_category"
-                      id="option3"
-                      onChange={handleChange}
-                      value={"3"}
-                    />{" "}
-                    Pants
-                  </label>
-                  <label
-                    className="btn"
-                  >
-                    <input
-                      type="radio"
-                      name="id_category"
-                      id="option4"
-                      onChange={handleChange}
-                      value={"4"}
-                    />{" "}
-                    Jacket
-                  </label>
-                  <label
-                    className="btn"
-                  >
-                    <input
-                      type="radio"
-                      name="id_category"
-                      id="option4"
-                      onChange={handleChange}
-                      value={"5"}
-                    />{" "}
-                    Shoes
-                  </label>
+                    <option selected>Select category</option>
+                    <option value={1}>T-Shirt</option>
+                    <option value={2}>Short</option>
+                    <option value={3}>Pants</option>
+                    <option value={4}>Jacket</option>
+                    <option value={5}>Shoes</option>
+                  </select>
                 </div>
-                {/* <input
-                  type="text"
-                  className="form-control mt-3"
-                  placeholder="category"
-                  name="id_category"
-                  value={data.id_category}
-                  onChange={handleChange}
-                /> */}
               </div>
             </section>
           </div>

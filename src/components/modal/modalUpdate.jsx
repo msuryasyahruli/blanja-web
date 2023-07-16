@@ -5,8 +5,16 @@ import Modal from "react-bootstrap/Modal";
 import { useDispatch } from "react-redux";
 import updateProductAction from "../../config/redux/actions/updateProductAction";
 
-function ModalUpdate({id,name,stock,price,description,id_category,children}) {
-  const dispatch = useDispatch()
+function ModalUpdate({
+  id,
+  name,
+  stock,
+  price,
+  description,
+  id_category,
+  children,
+}) {
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -34,7 +42,7 @@ function ModalUpdate({id,name,stock,price,description,id_category,children}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateProductAction(data, id, photo, setShow))
+    dispatch(updateProductAction(data, id, photo, setShow));
   };
 
   return (
@@ -44,7 +52,7 @@ function ModalUpdate({id,name,stock,price,description,id_category,children}) {
       </Button>
       <Modal show={show}>
         <Modal.Header>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Update product</Modal.Title>
         </Modal.Header>
         <form onSubmit={handleSubmit}>
           <Modal.Body>
@@ -71,7 +79,23 @@ function ModalUpdate({id,name,stock,price,description,id_category,children}) {
               name="stock"
               value={data.stock}
               onChange={handleChange}
+              
             />
+            <div class="form-group" style={{marginTop: "16px"}}>
+              <select
+                class="form-control"
+                name="id_category"
+                value={data.id_category}
+                onChange={handleChange}
+              >
+                <option selected>Select category</option>
+                <option value={1}>T-Shirt</option>
+                <option value={2}>Short</option>
+                <option value={3}>Pants</option>
+                <option value={4}>Jacket</option>
+                <option value={5}>Shoes</option>
+              </select>
+            </div>
             <input
               type="file"
               className="form-control mt-3 p-1"
@@ -87,14 +111,7 @@ function ModalUpdate({id,name,stock,price,description,id_category,children}) {
               value={data.description}
               onChange={handleChange}
             />
-            <input
-              type="text"
-              className="form-control mt-3"
-              placeholder="id_category"
-              name="id_category"
-              value={data.id_category}
-              onChange={handleChange}
-            />
+            
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>

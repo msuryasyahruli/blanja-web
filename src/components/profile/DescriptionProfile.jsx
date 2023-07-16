@@ -138,7 +138,7 @@ const DescriptionProfile = () => {
                     >
                       Items
                     </button>
-                    <button
+                    {/* <button
                       className="nav-link"
                       id="nav-Sold-tab"
                       data-toggle="tab"
@@ -161,7 +161,7 @@ const DescriptionProfile = () => {
                       aria-selected="false"
                     >
                       Archived
-                    </button>
+                    </button> */}
                   </div>
                 </nav>
                 <div className="tab-content" id="nav-tabContent">
@@ -171,22 +171,10 @@ const DescriptionProfile = () => {
                     role="tabpanel"
                     aria-labelledby="nav-items-tab"
                   >
-                    <input
-                      type="text"
-                      style={{
-                        width: 230,
-                        height: "19.8px",
-                        margin: 15,
-                        padding: 20,
-                        borderRadius: 50,
-                        border: 0,
-                        backgroundColor: "#efefef",
-                      }}
-                      placeholder="Search"
-                    />
+                    
                     <ListProduct />
                   </div>
-                  <div
+                  {/* <div
                     className="tab-pane fade"
                     id="nav-Sold"
                     role="tabpanel"
@@ -239,7 +227,7 @@ const DescriptionProfile = () => {
                         margin: 15,
                       }}
                     />
-                  </div>
+                  </div> */}
                 </div>
                 <hr />
               </section>

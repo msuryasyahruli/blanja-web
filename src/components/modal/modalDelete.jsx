@@ -21,9 +21,9 @@ function ModalDelete({id,children}) {
       <Button className="m-1" variant="danger" onClick={handleShow}>
         {children}
       </Button>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+      <Modal show={show}>
+        <Modal.Header>
+          <Modal.Title>Delete product</Modal.Title>
         </Modal.Header>
         <form onSubmit={handleSubmit}>
           <Modal.Body>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const createProductAction = (data, photo, setShow) => async (dispatch) => {
+const createProductAction = (data, photo) => async (dispatch) => {
   try {
     const formData = new FormData();
     formData.append("name", data.name);
@@ -17,13 +17,11 @@ const createProductAction = (data, photo, setShow) => async (dispatch) => {
     const result = products.data.data;
     console.log(result);
     alert("product created");
-    setShow(false);
     window.location.reload();
     dispatch({ type: "CREATE_PRODUCT", payload: result })
   } catch (err) {
     console.log(err);
     alert(err);
-    setShow(false);
   }
 };
 

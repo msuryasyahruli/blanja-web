@@ -62,9 +62,9 @@ function ModalCreate() {
       <Button className="m-3" variant="primary" onClick={handleShow}>
         Create
       </Button>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+      <Modal show={show}>
+        <Modal.Header>
+          <Modal.Title>Create product</Modal.Title>
         </Modal.Header>
         <form onSubmit={handleSubmit}>
           <Modal.Body>
