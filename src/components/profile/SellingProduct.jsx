@@ -96,7 +96,7 @@ const SellingProduct = () => {
                 />
                 <br />
                 <h6>Category</h6>
-                <div class="form-group">
+                <div class="form-group" style={{marginTop: "16px"}}>
                   <select
                     class="form-control"
                     name="id_category"

@@ -17,10 +17,10 @@ const OrderProduct = () => {
         0px; box-shadow: 0px 0px 10px #29292940, 0px 0px 25px #fff;
         {"}"}
       </style>
-      <div className="col-md-8">
+      <div className="col-lg-8">
         <section className="row" id="select_all_items">
           <div
-            className="col-lg-1 col-2"
+            className="col-md-1 col-2"
             style={{
               display: "flex",
               justifyContent: "center",
@@ -29,13 +29,13 @@ const OrderProduct = () => {
           >
             <input type="checkbox" style={{ margin: 20 }} />
           </div>
-          <div className="col-lg-9 col-6">
+          <div className="col-md-9 col-6">
             <label style={{ textAlign: "center", margin: "15px 0" }}>
               Select all items
-              <span style={{ color: "#9b9b9b" }}>(3 items selected)</span>
+              <span style={{ color: "#9b9b9b" }}> (3 items selected)</span>
             </label>
           </div>
-          <div className="col-lg-2 col-4">
+          <div className="col-md-2 col-4">
             <p
               style={{
                 textAlign: "center",
@@ -48,7 +48,7 @@ const OrderProduct = () => {
           </div>
         </section>
         <section className="row" id="select_product">
-          <div className="col-lg-7">
+          <div className="col-md-7">
             <div className="row">
               <div
                 className="col-md-2 col-2"
@@ -62,11 +62,7 @@ const OrderProduct = () => {
               </div>
               <div
                 className="col-md-10 col-10"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  padding: 5,
-                }}
+                style={{ display: "flex", alignItems: "center", padding: 5 }}
               >
                 <img src={require("../../assets/image/Mask Group (3).png")} />
                 <label style={{ lineHeight: "normal", padding: 15 }}>
@@ -76,10 +72,10 @@ const OrderProduct = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-5">
+          <div className="col-md-5">
             <div className="row">
               <div
-                className="col-8"
+                className="col-md-6 col-8"
                 style={{
                   display: "flex",
                   justifyContent: "center",
@@ -100,7 +96,7 @@ const OrderProduct = () => {
                 </div>
               </div>
               <div
-                className="col-4"
+                className="col-md-6 col-4"
                 style={{ textAlign: "center", paddingTop: 10 }}
               >
                 <p style={{ fontWeight: 700, fontSize: 16 }}>Rp 80,000</p>
@@ -109,7 +105,7 @@ const OrderProduct = () => {
           </div>
         </section>
         <section className="row" id="select_product">
-          <div className="col-lg-7">
+          <div className="col-md-7">
             <div className="row">
               <div
                 className="col-md-2 col-2"
@@ -123,11 +119,7 @@ const OrderProduct = () => {
               </div>
               <div
                 className="col-md-10 col-10"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  padding: 5,
-                }}
+                style={{ display: "flex", alignItems: "center", padding: 5 }}
               >
                 <img src={require("../../assets/image/Mask Group (3).png")} />
                 <label style={{ lineHeight: "normal", padding: 15 }}>
@@ -137,10 +129,10 @@ const OrderProduct = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-5">
+          <div className="col-md-5">
             <div className="row">
               <div
-                className="col-8"
+                className="col-md-6 col-8"
                 style={{
                   display: "flex",
                   justifyContent: "center",
@@ -161,7 +153,7 @@ const OrderProduct = () => {
                 </div>
               </div>
               <div
-                className="col-4"
+                className="col-md-6 col-4"
                 style={{ textAlign: "center", paddingTop: 10 }}
               >
                 <p style={{ fontWeight: 700, fontSize: 16 }}>Rp 80,000</p>
@@ -170,7 +162,7 @@ const OrderProduct = () => {
           </div>
         </section>
         <section className="row" id="select_product">
-          <div className="col-lg-7">
+          <div className="col-md-7">
             <div className="row">
               <div
                 className="col-md-2 col-2"
@@ -184,11 +176,7 @@ const OrderProduct = () => {
               </div>
               <div
                 className="col-md-10 col-10"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  padding: 5,
-                }}
+                style={{ display: "flex", alignItems: "center", padding: 5 }}
               >
                 <img src={require("../../assets/image/Mask Group (3).png")} />
                 <label style={{ lineHeight: "normal", padding: 15 }}>
@@ -198,10 +186,10 @@ const OrderProduct = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-5">
+          <div className="col-md-5">
             <div className="row">
               <div
-                className="col-8"
+                className="col-md-6 col-8"
                 style={{
                   display: "flex",
                   justifyContent: "center",
@@ -222,7 +210,7 @@ const OrderProduct = () => {
                 </div>
               </div>
               <div
-                className="col-4"
+                className="col-md-6 col-4"
                 style={{ textAlign: "center", paddingTop: 10 }}
               >
                 <p style={{ fontWeight: 700, fontSize: 16 }}>Rp 80,000</p>

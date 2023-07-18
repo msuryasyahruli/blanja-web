@@ -17,7 +17,7 @@ const OrderPayment = () => {
         background-color: #cd2617;
         {"}"}
       </style>
-      <div className="col-md-4">
+      <div className="col-lg-4">
         <section className="summary">
           <div>
             <p style={{ fontWeight: 600, fontSize: 16 }}>Shopping summary</p>

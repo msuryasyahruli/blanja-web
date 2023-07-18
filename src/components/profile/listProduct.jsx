@@ -81,9 +81,9 @@ const ListProduct = () => {
                 style={{ lineHeight: "20%", padding: 5 }}
               >
                 <h6>{product.name}</h6>
-                <h6>Rp {product.price}</h6>
-                <h6>Stock {product.stock}</h6>
-                <h6>{product.category}</h6>
+                <h6>Rp. {product.price}</h6>
+                <h6>Stock : {product.stock}</h6>
+                <h6>Category : {product.category}</h6>
               </div>
               <div className="col-lg-6">
                 <p>{product.description}</p>
@@ -107,13 +107,13 @@ const ListProduct = () => {
               </div>
             </div>
           ))}
-        <Pagination
-          totalPosts={products.length}
-          postsPerPage={postsPerPage}
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-        />
       </div>
+      <Pagination
+        totalPosts={products.length}
+        postsPerPage={postsPerPage}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
     </>
   );
 };

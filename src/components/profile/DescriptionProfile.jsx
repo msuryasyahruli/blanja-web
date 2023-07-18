@@ -1,8 +1,16 @@
 import React from "react";
 import ListProduct from "./listProduct";
 import SellingProduct from "./SellingProduct";
+import { useNavigate } from "react-router-dom";
 
 const DescriptionProfile = () => {
+  let navigate = useNavigate();
+
+  const isLogout = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
+
   return (
     <>
       <style>
@@ -30,8 +38,10 @@ const DescriptionProfile = () => {
             >
               <section>
                 <div className="p-3">
-                  <h4>My profile store</h4>
-                  <p>Manage your profile information</p>
+                  <div>
+                    <h4>My profile store</h4>
+                    <p>Manage your profile information</p>
+                  </div>
                   <hr />
                 </div>
                 <div className="row">
@@ -105,6 +115,21 @@ const DescriptionProfile = () => {
                   </section>
                 </div>
               </section>
+              <div className="p-4" style={{display: "flex", justifyContent: "end"}}>
+                <button
+                  style={{
+                    width: 140,
+                    height: 36,
+                    border: 0,
+                    borderRadius: "50px",
+                    backgroundColor: "#db3022",
+                    color: "#efefef",
+                  }}
+                  onClick={isLogout}
+                >
+                  Logout
+                </button>
+              </div>
             </div>
           </div>
           <div
@@ -138,7 +163,7 @@ const DescriptionProfile = () => {
                     >
                       Items
                     </button>
-                    {/* <button
+                    <button
                       className="nav-link"
                       id="nav-Sold-tab"
                       data-toggle="tab"
@@ -148,9 +173,9 @@ const DescriptionProfile = () => {
                       aria-controls="nav-Sold"
                       aria-selected="false"
                     >
-                      Sold
+                      Sold Items
                     </button>
-                    <button
+                    {/* <button
                       className="nav-link"
                       id="nav-Archived-tab"
                       data-toggle="tab"
@@ -171,10 +196,9 @@ const DescriptionProfile = () => {
                     role="tabpanel"
                     aria-labelledby="nav-items-tab"
                   >
-                    
                     <ListProduct />
                   </div>
-                  {/* <div
+                  <div
                     className="tab-pane fade"
                     id="nav-Sold"
                     role="tabpanel"
@@ -201,7 +225,7 @@ const DescriptionProfile = () => {
                       }}
                     />
                   </div>
-                  <div
+                  {/* <div
                     className="tab-pane fade"
                     id="nav-Archived"
                     role="tabpanel"
@@ -233,7 +257,7 @@ const DescriptionProfile = () => {
               </section>
             </div>
           </div>
-          <SellingProduct/>
+          <SellingProduct />
         </div>
       </div>
     </>
