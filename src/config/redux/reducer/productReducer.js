@@ -12,7 +12,7 @@ const productReducer = (state = initialState, action) => {
   } else if (action.type === "GET_DETAIL_PRODUCT") {
     return {
       ...state,
-      prduct: action.payload,
+      product: action.payload,
     };
   } else if (action.type === "CREATE_PRODUCT") {
     return state;

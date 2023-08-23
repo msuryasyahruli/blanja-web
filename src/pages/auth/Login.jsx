@@ -14,17 +14,17 @@ const Login = () => {
       ...data,
       [e.target.name]: e.target.value,
     });
-    console.log(data);
+    // console.log(data);
   };
   
   let navigate = useNavigate()
 
   let submit = (e) => {
     axios
-      .post("http://localhost:2525/users/login", data)
+      .post(`${process.env.REACT_APP_API_KEY}/users/login`, data)
       .then((res) => {
-        alert("Login success");
         localStorage.setItem("token",res.data.data.token);
+        alert("Login success");
         navigate("/home");
       })
       .catch((err) => {

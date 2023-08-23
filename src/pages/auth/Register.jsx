@@ -16,14 +16,14 @@ const Register = () => {
       ...data,
       [e.target.name]: e.target.value,
     });
-    console.log(data);
+    // console.log(data);
   };
 
   let navigate = useNavigate();
 
   let submit = (e) => {
     axios
-      .post("http://localhost:2525/users/register", data)
+      .post(`${process.env.REACT_APP_API_KEY}/users/register`, data)
       .then((res) => {
         alert("Register success");
         navigate("/login");

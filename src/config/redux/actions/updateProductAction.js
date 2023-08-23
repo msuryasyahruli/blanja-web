@@ -1,4 +1,5 @@
 import axios from "axios";
+import swal from "sweetalert";
 
 const updateProductAction = (data, id, photo, setShow) => async (dispatch) => {
   try {
@@ -9,16 +10,23 @@ const updateProductAction = (data, id, photo, setShow) => async (dispatch) => {
     formData.append("photo", photo);
     formData.append("description", data.description);
     formData.append("id_category", data.id_category);
-    const products = await axios.put(`http://localhost:2525/products/${id}`, formData, {
+    const products = await axios.put(`${process.env.REACT_APP_API_KEY}/products/${id}`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
     const result = products.data;
     console.log(products);
-    alert("product updated");
+    swal({
+      title: "Product Success",
+      text: "Product Updated",
+      icon: "success",
+      buttons: "Ok",
+    })
+    .then(()=>{
+      window.location.reload()
+    });
     setShow(false);
-    window.location.reload();
     dispatch({ type: "UPDATE_PRODUCT", payload: result })
   } catch (err) {
     console.log(err);

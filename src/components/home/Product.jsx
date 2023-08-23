@@ -16,11 +16,17 @@ const ProductHome = () => {
       <div className="row">
         {product.map((product, index) => (
           <div key={index} className="col-xl-2 col-md-3 col-6">
-            <div class="mt-3 mb-3 rounded" style={{backgroundColor: "#fbfbfb", boxShadow: "0px 0px 10px #29292920, 0px 0px 25px #fff"}}>
+            <div
+              class="mt-3 mb-3 rounded"
+              style={{
+                backgroundColor: "#fbfbfb",
+                boxShadow: "0px 0px 10px #29292920, 0px 0px 25px #fff",
+              }}
+            >
               <Link to={`/detail/${product.id}`}>
-                <div className="p-1" style={{height: "170px"}}>
+                <div className="p-1" style={{ height: "170px" }}>
                   <img
-                  class="h-100 rounded"
+                    class="h-100 rounded"
                     src={product.photo}
                     alt="Product"
                     crossOrigin="anonymous"

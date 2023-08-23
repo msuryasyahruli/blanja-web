@@ -10,6 +10,7 @@
     "axios": "^1.4.0",
     "bootstrap": "4.6",
     "cra-template": "1.2.0",
+    "primereact": "^9.6.0",
     "react": "^18.2.0",
     "react-bootstrap": "2.8",
     "react-dom": "^18.2.0",
@@ -19,6 +20,7 @@
     "redux": "4.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.2",
+    "sweetalert": "^2.1.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

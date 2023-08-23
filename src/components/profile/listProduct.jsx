@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ModalUpdate from "../modal/modalUpdate";
 import ModalDelete from "../modal/modalDelete";
 import Pagination from "../pagination/pagination";
+import SingleColumnDemo from "../sorting/sorting";
 
 const ListProduct = () => {
   const [search, setSearch] = useState("");
@@ -12,7 +13,7 @@ const ListProduct = () => {
   let [products, setProducts] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:2525/products")
+      .get(`${process.env.REACT_APP_API_KEY}/products`)
       .then((res) => {
         setProducts(res.data.data);
       })
@@ -41,6 +42,7 @@ const ListProduct = () => {
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Search"
       />
+      {/* <SingleColumnDemo/> */}
       <div
         style={{
           backgroundColor: "#efefef",

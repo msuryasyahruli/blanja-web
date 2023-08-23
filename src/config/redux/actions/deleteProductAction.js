@@ -1,17 +1,25 @@
 import axios from "axios";
+import swal from "sweetalert";
 
 const deleteProductAction = (id, setShow) => async (dispatch) => {
   try {
-    const products = await axios.delete(`http://localhost:2525/products/${id}`, {
+    const products = await axios.delete(`${process.env.REACT_APP_API_KEY}/products/${id}`, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
     const result = products.data;
     console.log(result);
-    alert("product deleted");
+    swal({
+      title: "Product Success",
+      text: "Product Deleted",
+      icon: "success",
+      buttons: "Ok",
+    })
+    .then(()=>{
+      window.location.reload()
+    });
     setShow(false);
-    window.location.reload();
     dispatch({ type: "DELETE_PRODUCT", payload: result });
   } catch (error) {
     console.log(error);
