@@ -1,9 +1,9 @@
 import axios from "axios";
 import swal from "sweetalert";
 
-const deleteProductAction = (id, setShow) => async (dispatch) => {
+const deleteProductAction = (product_id, setShow) => async (dispatch) => {
   try {
-    const products = await axios.delete(`${process.env.REACT_APP_API_KEY}/products/${id}`, {
+    const products = await axios.delete(`${process.env.REACT_APP_API_KEY}/products/${product_id}`, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -16,9 +16,9 @@ const deleteProductAction = (id, setShow) => async (dispatch) => {
       icon: "success",
       buttons: "Ok",
     })
-    .then(()=>{
-      window.location.reload()
-    });
+    // .then(()=>{
+    //   window.location.reload()
+    // });
     setShow(false);
     dispatch({ type: "DELETE_PRODUCT", payload: result });
   } catch (error) {

@@ -1,17 +1,18 @@
 // import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch } from "react-redux";
 import updateProductAction from "../../config/redux/actions/updateProductAction";
+import axios from "axios";
 
 function ModalUpdate({
-  id,
-  name,
-  stock,
-  price,
-  description,
-  id_category,
+  product_id,
+  product_name,
+  product_stock,
+  product_price,
+  product_description,
+  category_id,
   children,
 }) {
   const dispatch = useDispatch();
@@ -19,11 +20,11 @@ function ModalUpdate({
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [data, setData] = useState({
-    name,
-    stock,
-    price,
-    description,
-    id_category,
+    product_name,
+    product_stock,
+    product_price,
+    product_description,
+    category_id,
   });
 
   const [photo, setPhoto] = useState(null);
@@ -33,7 +34,7 @@ function ModalUpdate({
       ...data,
       [e.target.name]: e.target.value,
     });
-    console.log(data);
+    // console.log(data);
   };
 
   const handleUpload = (e) => {
@@ -42,8 +43,20 @@ function ModalUpdate({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateProductAction(data, id, photo, setShow));
+    dispatch(updateProductAction(data, product_id, photo, setShow));
   };
+
+  const [category, setCategory] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_KEY}/category`)
+      .then((res) => {
+        setCategory(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
 
   return (
     <>
@@ -60,58 +73,56 @@ function ModalUpdate({
               type="text"
               className="form-control mt-3"
               placeholder="name"
-              name="name"
-              value={data.name}
+              name="product_name"
+              value={data.product_name}
               onChange={handleChange}
             />
             <input
               type="text"
               className="form-control mt-3"
               placeholder="price"
-              name="price"
-              value={data.price}
+              name="product_price"
+              value={data.product_price}
               onChange={handleChange}
             />
             <input
               type="text"
               className="form-control mt-3"
               placeholder="stock"
-              name="stock"
-              value={data.stock}
+              name="product_stock"
+              value={data.product_stock}
               onChange={handleChange}
-              
             />
-            <div class="form-group" style={{marginTop: "16px"}}>
+            <div class="form-group" style={{ marginTop: "16px" }}>
               <select
                 class="form-control"
-                name="id_category"
-                value={data.id_category}
+                name="category_id"
+                value={data.category_id}
                 onChange={handleChange}
               >
                 <option selected>Select category</option>
-                <option value={1}>T-Shirt</option>
-                <option value={2}>Short</option>
-                <option value={3}>Pants</option>
-                <option value={4}>Jacket</option>
-                <option value={5}>Shoes</option>
+                {category.map((category) => (
+                  <option value={category.category_name}>
+                    {category.category_name}
+                  </option>
+                ))}
               </select>
             </div>
             <input
               type="file"
               className="form-control mt-3 p-1"
               placeholder="photo"
-              name="photo"
+              name="product_photo"
               onChange={handleUpload}
             />
             <input
               type="text"
               className="form-control mt-3"
               placeholder="description"
-              name="description"
-              value={data.description}
+              name="product_description"
+              value={data.product_description}
               onChange={handleChange}
             />
-            
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>

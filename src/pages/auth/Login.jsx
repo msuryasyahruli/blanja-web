@@ -4,26 +4,29 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Login = () => {
-  let [data, setData] = useState({
-    email: "",
-    password: "",
+  //seller
+  const [sellerdata, setSellerdata] = useState({
+    seller_email: "",
+    seller_password: "",
   });
 
-  let change = (e) => {
-    setData({
-      ...data,
+  const sellerchange = (e) => {
+    setSellerdata({
+      ...sellerdata,
       [e.target.name]: e.target.value,
     });
-    // console.log(data);
+    // console.log(sellerdata);
   };
   
-  let navigate = useNavigate()
+  const navigate = useNavigate()
 
-  let submit = (e) => {
+  const sellersubmit = (e) => {
     axios
-      .post(`${process.env.REACT_APP_API_KEY}/users/login`, data)
+      .post(`${process.env.REACT_APP_API_KEY}/seller/login`, sellerdata)
       .then((res) => {
         localStorage.setItem("token",res.data.data.token);
+        localStorage.setItem("sellerId",res.data.data.seller_id);
+        localStorage.setItem("role",res.data.data.role);
         alert("Login success");
         navigate("/home");
       })
@@ -32,6 +35,37 @@ const Login = () => {
         console.log(err);
       });
   };
+
+  //customer
+  const [customerdata, setCustomerdata] = useState({
+    customer_email: "",
+    customer_password: "",
+  });
+
+  const customerchange = (e) => {
+    setCustomerdata({
+      ...customerdata,
+      [e.target.name]: e.target.value,
+    });
+    // console.log(customerdata);
+  };
+
+  const customersubmit = (e) => {
+    axios
+      .post(`${process.env.REACT_APP_API_KEY}/customer/login`, customerdata)
+      .then((res) => {
+        localStorage.setItem("token",res.data.data.token);
+        localStorage.setItem("customerId",res.data.data.customer_id);
+        localStorage.setItem("role",res.data.data.role);
+        alert("Login success");
+        navigate("/home");
+      })
+      .catch((err) => {
+        alert("Account doesn't exist")
+        console.log(err);
+      });
+  };
+
   return (
     <>
       <style>
@@ -53,16 +87,16 @@ const Login = () => {
       <div className={`${style.body}`}>
         <section className={`${style.container}`}>
           <div className={`${style.title}`}>
-            <img src={require("../../assets/image/Group 1158.png")} />
+            <img src={require("../../assets/image/Group 1158.png")} alt="logo"/>
           </div>
           <div className={`${style.text}`}>
             <p>Please login with your account</p>
           </div>
-          {/* <ul
+          <ul
             className="nav nav-pills mb-3 justify-content-center"
             role="tablist"
-          > */}
-            {/* <li className="nav-item">
+          >
+            <li className="nav-item">
               <button
                 className="nav-link active"
                 data-toggle="pill"
@@ -71,8 +105,8 @@ const Login = () => {
               >
                 Customer
               </button>
-            </li> */}
-            {/* <li className="nav-item">
+            </li>
+            <li className="nav-item">
               <button
                 className="nav-link"
                 data-toggle="pill"
@@ -81,31 +115,31 @@ const Login = () => {
               >
                 Seller
               </button>
-            </li> */}
-          {/* </ul> */}
+            </li>
+          </ul>
           <section className="tab-content">
             <div className="tab-pane fade show active" id="customer">
               <div className={`${style.register}`}>
                 <input
                   type="email"
-                  name="email"
-                  id="email"
+                  name="customer_email"
+                  id="customer_email"
                   placeholder="Email"
-                  onChange={change}
+                  onChange={customerchange}
                 />
                 <input
                   type="password"
-                  name="password"
-                  id="password"
+                  name="customer_password"
+                  id="customer_password"
                   placeholder="Password"
-                  onChange={change}
+                  onChange={customerchange}
                 />
               </div>
               <div className={`${style.Forgot}`}>
                 <Link to="/forgot">Forgot password?</Link>
               </div>
               <div className={`${style.button}`}>
-                  <button onClick={submit}>LOGIN</button>
+                  <button onClick={customersubmit}>LOGIN</button>
               </div>
               <div className={`${style.toRegist}`}>
                 <p>
@@ -117,28 +151,28 @@ const Login = () => {
                 </p>
               </div>
             </div>
-            {/* <div className="tab-pane fade" id="seller">
+            <div className="tab-pane fade" id="seller">
               <div className={`${style.register}`}>
                 <input
                   type="email"
-                  name="email"
-                  id="email"
+                  name="seller_email"
+                  id="seller_email"
                   placeholder="Email"
-                  onChange={change}
+                  onChange={sellerchange}
                 />
                 <input
                   type="password"
-                  name="password"
-                  id="password"
+                  name="seller_password"
+                  id="seller_password"
                   placeholder="Password"
-                  onChange={change}
+                  onChange={sellerchange}
                 />
               </div>
               <div className={`${style.Forgot}`}>
                 <Link to="/forgot">Forgot password?</Link>
               </div>
               <div className={`${style.button}`}>
-                  <button onClick={submit}>LOGIN</button>
+                  <button onClick={sellersubmit}>LOGIN</button>
               </div>
               <div className={`${style.toRegist}`}>
                 <p>
@@ -149,7 +183,7 @@ const Login = () => {
                   </span>
                 </p>
               </div>
-            </div> */}
+            </div>
           </section>
         </section>
       </div>

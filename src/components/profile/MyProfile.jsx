@@ -1,15 +1,60 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ListProduct from "./listProduct";
 import SellingProduct from "./SellingProduct";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const DescriptionProfile = () => {
-  let navigate = useNavigate();
+const MyProfile = () => {
+  const navigate = useNavigate();
 
   const isLogout = () => {
     localStorage.clear();
     navigate("/login");
   };
+
+  const sellerId = localStorage.getItem("sellerId");
+  const [seller, setSeller] = useState([]);
+
+  const handleChange = (e) => {
+    setSeller({
+      ...seller,
+    });
+    console.log(seller);
+  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const formData = new FormData();
+  //   formData.append("seller_fullname", seller.seller_fullname);
+  //   formData.append("seller_email", seller.seller_email);
+  //   formData.append("seller_phone", seller.seller_phone);
+  //   formData.append("store_name", seller.store_name);
+  //   formData.append("store_description", seller.store_description);
+  //   axios
+  //     .put(`${process.env.REACT_APP_API_KEY}/seller/${sellerId}`, formData, {
+  //       headers: {
+  //         "Content-Type": "multipart/form-data",
+  //       },
+  //     },[sellerId])
+  //     .then((res) => {
+  //       console.log(res);
+  //       alert("product updated");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       alert(err);
+  //     });
+  // };
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_KEY}/seller/${sellerId}`)
+      .then((res) => {
+        setSeller(res.data.data[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [sellerId]);
 
   return (
     <>
@@ -80,42 +125,70 @@ const DescriptionProfile = () => {
                     </div>
                   </section>
                   <section className="m-3 col-xl-8">
-                    <div className="row">
-                      <div className="col-md-4">
-                        <h6>Store name</h6>
+                    {/* <form onSubmit={handleSubmit}> */}
+                      <div className="row">
+                        <div className="col-md-4">
+                          <h6>Store name</h6>
+                        </div>
+                        <div className="col-md-8 profileIn">
+                          <input
+                            type="text"
+                            placeholder="Store name"
+                            value={seller.store_name}
+                            onChange={handleChange}
+                          />
+                        </div>
                       </div>
-                      <div className="col-md-8 profileIn">
-                        <input type="text" placeholder="Store name" />
+                      <div className="row">
+                        <div className="col-md-4">
+                          <h6>Email</h6>
+                        </div>
+                        <div className="col-md-8 profileIn">
+                          <input
+                            type="text"
+                            placeholder="example@gmail.com"
+                            value={seller.seller_email}
+                            onChange={handleChange}
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-4">
-                        <h6>Email</h6>
+                      <div className="row">
+                        <div className="col-md-4">
+                          <h6>Phone number</h6>
+                        </div>
+                        <div className="col-md-8 profileIn">
+                          <input
+                            type="text"
+                            placeholder="08xxxxxxxxxx"
+                            value={seller.seller_phone}
+                            onChange={handleChange}
+                          />
+                        </div>
                       </div>
-                      <div className="col-md-8 profileIn">
-                        <input type="text" placeholder="example@gmail.com" />
+                      <div className="row">
+                        <div className="col-md-4">
+                          <h6>Store description</h6>
+                        </div>
+                        <div className="col-md-8 profileIn">
+                          <input
+                            type="text"
+                            placeholder="Store description"
+                            value={seller.store_description}
+                            onChange={handleChange}
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-4">
-                        <h6>Phone number</h6>
-                      </div>
-                      <div className="col-md-8 profileIn">
-                        <input type="text" placeholder="08xxxxxxxxxx" />
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-4">
-                        <h6>Store description</h6>
-                      </div>
-                      <div className="col-md-8 profileIn">
-                        <input type="text" placeholder="Store description" />
-                      </div>
-                    </div>
+                      <button type="submit" className="btn btn-primary">
+                        Update
+                      </button>
+                    {/* </form> */}
                   </section>
                 </div>
               </section>
-              <div className="p-4" style={{display: "flex", justifyContent: "end"}}>
+              <div
+                className="p-4"
+                style={{ display: "flex", justifyContent: "end" }}
+              >
                 <button
                   style={{
                     width: 140,
@@ -175,18 +248,6 @@ const DescriptionProfile = () => {
                     >
                       Sold Items
                     </button>
-                    {/* <button
-                      className="nav-link"
-                      id="nav-Archived-tab"
-                      data-toggle="tab"
-                      data-target="#nav-Archived"
-                      type="button"
-                      role="tab"
-                      aria-controls="nav-Archived"
-                      aria-selected="false"
-                    >
-                      Archived
-                    </button> */}
                   </div>
                 </nav>
                 <div className="tab-content" id="nav-tabContent">
@@ -225,33 +286,6 @@ const DescriptionProfile = () => {
                       }}
                     />
                   </div>
-                  {/* <div
-                    className="tab-pane fade"
-                    id="nav-Archived"
-                    role="tabpanel"
-                    aria-labelledby="nav-Archived-tab"
-                  >
-                    <input
-                      type="text"
-                      style={{
-                        width: 230,
-                        height: "19.8px",
-                        margin: 15,
-                        padding: 20,
-                        border: 0,
-                        backgroundColor: "#efefef",
-                        borderRadius: 50,
-                      }}
-                      placeholder="Search"
-                    />
-                    <div
-                      style={{
-                        border: "1px solid",
-                        height: 412,
-                        margin: 15,
-                      }}
-                    />
-                  </div> */}
                 </div>
                 <hr />
               </section>
@@ -264,4 +298,4 @@ const DescriptionProfile = () => {
   );
 };
 
-export default DescriptionProfile;
+export default MyProfile;

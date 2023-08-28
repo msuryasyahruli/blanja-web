@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const Description = () => {
-  let { id } = useParams();
-  let [product, setProducts] = useState([]);
+  const { id } = useParams();
+  const [product, setProducts] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:2525/products/${id}`)
+      .get(`${process.env.REACT_APP_API_KEY}/products/${id}`)
       .then((res) => {
         setProducts(res.data.data[0]);
       })
@@ -20,7 +20,7 @@ const Description = () => {
       <section>
         <p style={{ fontWeight: 600, fontSize: 20 }}>Description</p>
         <p style={{ fontWeight: 500, fontSize: 14, color: "#9b9b9b" }}>
-        {product.description}
+        {product.product_description}
         </p>
       </section>
     </>

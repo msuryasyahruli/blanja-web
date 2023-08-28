@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const DetailProduct = () => {
-  let { id } = useParams();
-  let [product, setProducts] = useState([]);
+  const { id } = useParams();
+  const [product, setProducts] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:2525/products/${id}`)
+      .get(`${process.env.REACT_APP_API_KEY}/products/${id}`)
       .then((res) => {
         setProducts(res.data.data[0]);
       })
@@ -27,7 +27,7 @@ const DetailProduct = () => {
         <section className="col-lg-4">
           <div>
             <img
-              src={product.photo}
+              src={product.product_photo}
               alt="Product"
               crossOrigin="anonymous"
               style={{ width: "100%" }}
@@ -36,19 +36,19 @@ const DetailProduct = () => {
         </section>
         <section className="col-lg-8">
           <p style={{ fontSize: 28, fontWeight: 600 }}>
-          {product.name}
+          {product.product_name}
             <br />
             <span style={{ fontSize: 16, fontWeight: 500, color: "#9b9b9b" }}>
               Zalora Cloth
             </span>
             <br />
-            <img src={require("../../assets/image/Rating 5 stars.png")} />
+            <img src={require("../../assets/image/Rating 5 stars.png")} alt="stars"/>
           </p>
           <p style={{ color: "#9b9b9b" }}>
             Price
             <br />
             <span style={{ fontSize: 33, fontWeight: 700, color: "black" }}>
-              Rp {product.price}
+              Rp {product.product_price}
             </span>
           </p>
           <div>
@@ -110,7 +110,7 @@ const DetailProduct = () => {
                 }}
               >
                 <div className="amount" style={{ backgroundColor: "#d4d4d4" }}>
-                  <img src={require("../../assets/image/min.png")} />
+                  <img src={require("../../assets/image/min.png")} alt="min"/>
                 </div>
                 <div className="amount">
                   <h6>26</h6>
@@ -119,7 +119,7 @@ const DetailProduct = () => {
                   className="amount"
                   style={{ boxShadow: "0px 0px 10px #29292940" }}
                 >
-                  <img src={require("../../assets/image/plus.png")} />
+                  <img src={require("../../assets/image/plus.png")}alt="plus" />
                 </div>
               </div>
             </div>
@@ -134,7 +134,7 @@ const DetailProduct = () => {
                 }}
               >
                 <div className="amount" style={{ backgroundColor: "#d4d4d4" }}>
-                  <img src={require("../../assets/image/min.png")} />
+                  <img src={require("../../assets/image/min.png")} alt="min" />
                 </div>
                 <div className="amount">
                   <h6>1</h6>
@@ -143,7 +143,7 @@ const DetailProduct = () => {
                   className="amount"
                   style={{ boxShadow: "0px 0px 10px #29292940" }}
                 >
-                  <img src={require("../../assets/image/plus.png")} />
+                  <img src={require("../../assets/image/plus.png")} alt="plus" />
                 </div>
               </div>
             </div>

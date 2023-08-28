@@ -1,22 +1,42 @@
 import React from "react";
 import HeaderAfterLog from "../components/navbar/headerAfterLog";
-import ProfileName from "../components/profile/Profile";
-import DescriptionProfile from "../components/profile/DescriptionProfile";
+import SellerProfile from "../components/profile/SellerProfile";
+import MyProfile from "../components/profile/MyProfile";
+import CustomerProfile from "../components/profilecustomer/CustomerProfile";
+// import MyAccount from "../components/profilecustomer/MyAccount";
 
 const Profile = () => {
-  return (
-    <>
-      <HeaderAfterLog />
-      <main>
-        <div className="container">
-          <div className="row">
-            <ProfileName/>
-            <DescriptionProfile/>
+  const role = localStorage.getItem('role');
+
+  if (role === "seller") {
+    return (
+      <>
+        <HeaderAfterLog />
+        <main>
+          <div className="container">
+            <div className="row">
+              <SellerProfile/>
+              <MyProfile/>
+            </div>
           </div>
-        </div>
-      </main>
-    </>
-  );
+        </main>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <HeaderAfterLog />
+        <main>
+          <div className="container">
+            <div className="row">
+              <CustomerProfile/>
+              {/* <MyAccount/> */}
+            </div>
+          </div>
+        </main>
+      </>
+    );
+  }
 };
 
 export default Profile;

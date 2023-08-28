@@ -5,7 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import { useDispatch } from "react-redux";
 import deleteProductAction from "../../config/redux/actions/deleteProductAction";
 
-function ModalDelete({id,children}) {
+function ModalDelete({product_id,children}) {
   const dispatch = useDispatch()
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -13,7 +13,7 @@ function ModalDelete({id,children}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(deleteProductAction(id, setShow))
+    dispatch(deleteProductAction(product_id, setShow))
   };
 
   return (

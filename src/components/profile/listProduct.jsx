@@ -4,23 +4,25 @@ import { Link } from "react-router-dom";
 import ModalUpdate from "../modal/modalUpdate";
 import ModalDelete from "../modal/modalDelete";
 import Pagination from "../pagination/pagination";
-import SingleColumnDemo from "../sorting/sorting";
+// import SingleColumnDemo from "../sorting/sorting";
 
 const ListProduct = () => {
+  const sellerId = localStorage.getItem('sellerId');
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
-  let [products, setProducts] = useState([]);
+
+  const [products, setProducts] = useState([]);
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_KEY}/products`)
+      .get(`${process.env.REACT_APP_API_KEY}/products/seller/${sellerId}`)
       .then((res) => {
         setProducts(res.data.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  });
 
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
@@ -55,11 +57,13 @@ const ListProduct = () => {
           .filter((product) => {
             return search.toLowerCase() === ""
               ? product
-              : product.name.toLowerCase().includes(search.toLowerCase());
+              : product.product_name
+                  .toLowerCase()
+                  .includes(search.toLowerCase());
           })
           .map((product) => (
             <div
-              key={product.id}
+              key={product.product_id}
               className="row"
               style={{
                 backgroundColor: "#fff",
@@ -71,7 +75,7 @@ const ListProduct = () => {
               <div className="col-lg-3 col-md-4 col-6">
                 <div className="photoProduct">
                   <img
-                    src={product.photo}
+                    src={product.product_photo}
                     alt="Product"
                     crossOrigin="anonymous"
                     style={{ width: 100 }}
@@ -82,30 +86,32 @@ const ListProduct = () => {
                 className="col-lg-3 col-6"
                 style={{ lineHeight: "20%", padding: 5 }}
               >
-                <h6>{product.name}</h6>
-                <h6>Rp. {product.price}</h6>
-                <h6>Stock : {product.stock}</h6>
-                <h6>Category : {product.category}</h6>
+                <h6>{product.product_name}</h6>
+                <h6>Rp. {product.product_price}</h6>
+                <h6>Stock : {product.product_stock}</h6>
+                <h6>Category : {product.category_id}</h6>
               </div>
               <div className="col-lg-6">
-                <p>{product.description}</p>
+                <p>{product.product_description}</p>
               </div>
               <div className="col-12" style={{ padding: 15 }}>
-                <Link to={`/detail/${product.id}`}>
+                <Link to={`/detail/${product.product_id}`}>
                   <button className="btn btn-primary m-1">Detail</button>
                 </Link>
                 <ModalUpdate
-                  id={product.id}
-                  name={product.name}
-                  price={product.price}
-                  stock={product.stock}
-                  photo={product.photo}
-                  description={product.description}
-                  category={product.id_category}
+                  product_id={product.product_id}
+                  product_name={product.product_name}
+                  product_price={product.product_price}
+                  product_stock={product.product_stock}
+                  product_photo={product.product_photo}
+                  product_description={product.product_description}
+                  product_category={product.category_id}
                 >
                   Update
                 </ModalUpdate>
-                <ModalDelete id={product.id}>Delete</ModalDelete>
+                <ModalDelete product_id={product.product_id}>
+                  Delete
+                </ModalDelete>
               </div>
             </div>
           ))}

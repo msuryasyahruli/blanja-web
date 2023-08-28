@@ -39,7 +39,7 @@ function ModalCreate() {
     formData.append("description", data.description);
     formData.append("id_category", data.id_category);
     axios
-      .post("http://localhost:2525/products", formData, {
+      .post(`${process.env.REACT_APP_API_KEY}/products`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

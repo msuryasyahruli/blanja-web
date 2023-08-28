@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import createProductAction from "../../config/redux/actions/createProductAction";
+import axios from "axios";
 
 const SellingProduct = () => {
+  const sellerId = localStorage.getItem("sellerId");
   const dispatch = useDispatch();
   const [data, setData] = useState({
-    name: "",
-    stock: "",
-    price: "",
-    description: "",
-    id_category: "",
+    product_name: "",
+    product_stock: "",
+    product_price: "",
+    product_description: "",
+    category_id: "",
+    seller_id: `${sellerId}`,
   });
 
   const [photo, setPhoto] = useState(null);
@@ -20,7 +23,7 @@ const SellingProduct = () => {
       ...data,
       [e.target.name]: e.target.value,
     });
-    console.log(data);
+    // console.log(data);
   };
 
   const handleUpload = (e) => {
@@ -31,6 +34,18 @@ const SellingProduct = () => {
     e.preventDefault();
     dispatch(createProductAction(data, photo));
   };
+
+  const [category, setCategory] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_KEY}/category`)
+      .then((res) => {
+        setCategory(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
 
   return (
     <>
@@ -57,8 +72,8 @@ const SellingProduct = () => {
                   type="text"
                   className="form-control mt-3"
                   placeholder="name"
-                  name="name"
-                  value={data.name}
+                  name="product_name"
+                  value={data.product_name}
                   onChange={handleChange}
                 />
               </div>
@@ -80,8 +95,8 @@ const SellingProduct = () => {
                   type="text"
                   className="form-control mt-3"
                   placeholder="price"
-                  name="price"
-                  value={data.price}
+                  name="product_price"
+                  value={data.product_price}
                   onChange={handleChange}
                 />
                 <br />
@@ -90,25 +105,25 @@ const SellingProduct = () => {
                   type="text"
                   className="form-control mt-3"
                   placeholder="stock"
-                  name="stock"
-                  value={data.stock}
+                  name="product_stock"
+                  value={data.product_stock}
                   onChange={handleChange}
                 />
                 <br />
                 <h6>Category</h6>
-                <div class="form-group" style={{marginTop: "16px"}}>
+                <div class="form-group" style={{ marginTop: "16px" }}>
                   <select
                     class="form-control"
-                    name="id_category"
-                    value={data.id_category}
+                    name="category_id"
+                    value={data.category_id}
                     onChange={handleChange}
                   >
                     <option selected>Select category</option>
-                    <option value={1}>T-Shirt</option>
-                    <option value={2}>Short</option>
-                    <option value={3}>Pants</option>
-                    <option value={4}>Jacket</option>
-                    <option value={5}>Shoes</option>
+                    {category.map((category) => (
+                      <option value={category.category_name}>
+                        {category.category_name}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -151,8 +166,8 @@ const SellingProduct = () => {
                   type="text"
                   className="form-control mt-3"
                   placeholder="description"
-                  name="description"
-                  value={data.description}
+                  name="product_description"
+                  value={data.product_description}
                   onChange={handleChange}
                 />
               </div>

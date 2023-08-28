@@ -1,6 +1,20 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-const ProfileName = () => {
+const SellerProfile = () => {
+  const sellerId = localStorage.getItem('sellerId');
+  const [seller, setSeller] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_KEY}/seller/${sellerId}`)
+      .then((res) => {
+        setSeller(res.data.data[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },[sellerId]);
+
   return (
     <>
       <style>
@@ -24,7 +38,7 @@ const ProfileName = () => {
             style={{ height: 60 }}
           />
           <div className="m-2 text-center" style={{ height: 50 }}>
-            <h6 className="p-0">Johanes Mikael</h6>
+            <h6 className="p-0">{seller.seller_fullname}</h6>
             <p style={{ color: "#9b9b9b" }}>Ubah profile</p>
           </div>
         </section>
@@ -62,7 +76,10 @@ const ProfileName = () => {
                   display: "flexbox",
                 }}
               >
-                <img src={require("../../assets/image/home (2) 1.png")} alt="Home" />
+                <img
+                  src={require("../../assets/image/home (2) 1.png")}
+                  alt="Home"
+                />
               </div>
               <p style={{ margin: 3, fontWeight: 500, fontSize: 14 }}>Store</p>
             </button>
@@ -93,7 +110,10 @@ const ProfileName = () => {
                   display: "flexbox",
                 }}
               >
-                <img src={require("../../assets/image/package 1.png")} alt="Product" />
+                <img
+                  src={require("../../assets/image/package 1.png")}
+                  alt="Product"
+                />
               </div>
               <p style={{ margin: 3, fontWeight: 500, fontSize: 14 }}>
                 Product
@@ -126,7 +146,10 @@ const ProfileName = () => {
                   display: "flexbox",
                 }}
               >
-                <img src={require("../../assets/image/shopping-cart (3) 1.png")} alt="selling" />
+                <img
+                  src={require("../../assets/image/shopping-cart (3) 1.png")}
+                  alt="selling"
+                />
               </div>
               <p style={{ margin: 3, fontWeight: 500, fontSize: 14 }}>
                 Selling products
@@ -139,4 +162,4 @@ const ProfileName = () => {
   );
 };
 
-export default ProfileName;
+export default SellerProfile;

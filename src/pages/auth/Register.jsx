@@ -4,26 +4,56 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Register = () => {
-  let [data, setData] = useState({
-    email: "",
-    fullname: "",
-    password: "",
-    role: "",
+  // seller
+  const [sellerdata, setSellerdata] = useState({
+    seller_fullname: "",
+    seller_email: "",
+    seller_password: "",
+    seller_phone: "",
+    store_name: "",
+    store_description: "",
   });
 
-  let change = (e) => {
-    setData({
-      ...data,
+  const sellerchange = (e) => {
+    setSellerdata({
+      ...sellerdata,
       [e.target.name]: e.target.value,
     });
-    // console.log(data);
+    // console.log(sellerdata);
   };
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
-  let submit = (e) => {
+  const sellersubmit = (e) => {
     axios
-      .post(`${process.env.REACT_APP_API_KEY}/users/register`, data)
+      .post(`${process.env.REACT_APP_API_KEY}/seller/register`, sellerdata)
+      .then((res) => {
+        alert("Register success");
+        navigate("/login");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // customer
+  const [customerdata, setCustomerdata] = useState({
+    customer_fullname: "",
+    customer_email: "",
+    customer_password: "",
+  });
+
+  const customerchange = (e) => {
+    setCustomerdata({
+      ...customerdata,
+      [e.target.name]: e.target.value,
+    });
+    // console.log(customerdata);
+  };
+
+  const customersubmit = (e) => {
+    axios
+      .post(`${process.env.REACT_APP_API_KEY}/customer/register`, customerdata)
       .then((res) => {
         alert("Register success");
         navigate("/login");
@@ -55,12 +85,15 @@ const Register = () => {
       <div className={`${style.body}`}>
         <section className={`${style.container}`}>
           <div className={`${style.title}`}>
-            <img src={require("../../assets/image/Group 1158.png")} alt="logo" />
+            <img
+              src={require("../../assets/image/Group 1158.png")}
+              alt="logo"
+            />
           </div>
           <div className={`${style.text}`}>
             <p>Register your new account</p>
           </div>
-          <div
+          {/* <div
             className="btn-group btn-group-toggle"
             data-toggle="buttons"
             style={{ width: "250px", margin: "0 auto" }}
@@ -85,8 +118,8 @@ const Register = () => {
               />{" "}
               Seller
             </label>
-          </div>
-          {/* <ul
+          </div> */}
+          <ul
             className="nav nav-pills mb-3 justify-content-center"
             role="tablist"
           >
@@ -110,34 +143,34 @@ const Register = () => {
                 Seller
               </button>
             </li>
-          </ul> */}
+          </ul>
           <section className="tab-content">
             <div className="tab-pane fade show active" id="customer">
               <div className={`${style.register}`}>
                 <input
                   type="text"
-                  name="fullname"
-                  id="fullname"
+                  name="customer_fullname"
+                  id="customer_fullname"
                   placeholder="Name"
-                  onChange={change}
+                  onChange={customerchange}
                 />
                 <input
                   type="email"
-                  name="email"
-                  id="email"
+                  name="customer_email"
+                  id="customer_email"
                   placeholder="Email"
-                  onChange={change}
+                  onChange={customerchange}
                 />
                 <input
                   type="password"
-                  name="password"
-                  id="password"
+                  name="customer_password"
+                  id="customer_password"
                   placeholder="Password"
-                  onChange={change}
+                  onChange={customerchange}
                 />
               </div>
               <div className={`${style.button}`}>
-                <button onClick={submit}>SIGN UP</button>
+                <button onClick={customersubmit}>SIGN UP</button>
               </div>
               <div className={`${style.toLogin}`}>
                 <p>
@@ -149,34 +182,46 @@ const Register = () => {
                 </p>
               </div>
             </div>
-            {/* <div className="tab-pane fade" id="seller">
+            <div className="tab-pane fade" id="seller">
               <div className={`${style.register}`}>
                 <input
                   type="text"
-                  name="fullname"
-                  id="fullname"
+                  name="seller_fullname"
+                  id="seller_fullname"
                   placeholder="Name"
-                  onChange={change}
+                  onChange={sellerchange}
                 />
                 <input
                   type="email"
-                  name="email"
-                  id="email"
+                  name="seller_email"
+                  id="seller_email"
                   placeholder="Email"
-                  onChange={change}
+                  onChange={sellerchange}
                 />
-                <input type="text" placeholder="Phone Number" />
-                <input type="text" placeholder="Store Name" />
+                <input
+                  type="text"
+                  placeholder="Phone Number"
+                  name="seller_phone"
+                  id="seller_phone"
+                  onChange={sellerchange}
+                />
+                <input
+                  type="text"
+                  placeholder="Store Name"
+                  name="store_name"
+                  id="store_name"
+                  onChange={sellerchange}
+                />
                 <input
                   type="password"
-                  name="password"
-                  id="password"
+                  name="seller_password"
+                  id="seller_password"
                   placeholder="Password"
-                  onChange={change}
+                  onChange={sellerchange}
                 />
               </div>
               <div className={`${style.button}`}>
-                <button>SIGN UP</button>
+                <button onClick={sellersubmit}>SIGN UP</button>
               </div>
               <div className={`${style.toLogin}`}>
                 <p>
@@ -187,7 +232,7 @@ const Register = () => {
                   </span>
                 </p>
               </div>
-            </div> */}
+            </div>
           </section>
         </section>
       </div>
