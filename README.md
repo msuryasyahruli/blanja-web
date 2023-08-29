@@ -81,7 +81,7 @@ npm install
 Create .env file in your root project folder.
 
 ```
-REACT_APP_BACKEND = [BACKEND_URL]
+REACT_APP_API_KEY = [BACKEND_URL]
 ```
 
 <!-- ROADMAP -->
