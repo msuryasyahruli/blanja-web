@@ -162,7 +162,7 @@ const SellingProduct = () => {
                 <h4>Description</h4>
                 <hr />
                 <h6>Description</h6>
-                <input
+                <textarea
                   type="text"
                   className="form-control mt-3"
                   placeholder="description"

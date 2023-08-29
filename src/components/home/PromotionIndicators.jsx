@@ -25,7 +25,7 @@ const PromotionIndicators = () => {
           style={{ borderRadius: 10, lineHeight: 100 }}
         >
           <div className="carousel-item active">
-            <img src={trend2020} className="d-block w-100" />
+            <img src={trend2020} className="d-block w-100" alt="img" />
             <div
               className="carousel-caption d-none d-md-block"
               style={{ fontSize: 100, fontWeight: 300 }}
@@ -34,7 +34,7 @@ const PromotionIndicators = () => {
             </div>
           </div>
           <div className="carousel-item">
-            <img src={blackedition} className="d-block w-100" />
+            <img src={blackedition} className="d-block w-100" alt="img" />
             <div
               className="carousel-caption d-none d-md-block"
               style={{ fontSize: 100, fontWeight: 300 }}
@@ -43,7 +43,7 @@ const PromotionIndicators = () => {
             </div>
           </div>
           <div className="carousel-item">
-            <img src={trend2020} className="d-block w-100" />
+            <img src={trend2020} className="d-block w-100" alt="img" />
             <div
               className="carousel-caption d-none d-md-block"
               style={{ fontSize: 100, fontWeight: 300 }}
@@ -52,7 +52,7 @@ const PromotionIndicators = () => {
             </div>
           </div>
           <div className="carousel-item">
-            <img src={blackedition} className="d-block w-100" />
+            <img src={blackedition} className="d-block w-100" alt="img" />
             <div
               className="carousel-caption d-none d-md-block"
               style={{ fontSize: 100, fontWeight: 300 }}

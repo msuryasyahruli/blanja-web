@@ -61,11 +61,9 @@ const ShippingAddress = () => {
                     Kabupaten Banyumas, Jawa Tengah, 53181 [Tokopedia Note: blok
                     c 16] Sokaraja, Kab. Banyumas, 53181
                   </p>
-                  {/* Button to Open the Modal */}
-                  <h6 data-toggle="modal" data-target="#myModal">
+                  <h6 className="btn" data-toggle="modal" data-target="#myModal">
                     Change address
                   </h6>
-                  {/* The Modal */}
                   <div
                     className="modal fade"
                     id="myModal"

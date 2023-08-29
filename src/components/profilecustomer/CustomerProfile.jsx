@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MyAccount from "./MyAccount";
 import ShippingAddress from "./shippingAddress";
 import MyOrder from "./MyOrder";
+import axios from "axios";
 
 const CustomerProfile = () => {
+  const customerId = localStorage.getItem("customerId");
+  const [customer, setCustomer] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_KEY}/customer/detail/${customerId}`)
+      .then((res) => {
+        setCustomer(res.data.data[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [customerId]);
+
   return (
     <>
       <style>
@@ -27,7 +41,7 @@ const CustomerProfile = () => {
             style={{ height: 60 }}
           />
           <div className="m-2 text-center" style={{ height: 50 }}>
-            <h6 className="p-0">Johanes Mikael</h6>
+            <h6 className="p-0">{customer.customer_fullname}</h6>
             <p style={{ color: "#9b9b9b" }}>Ubah profile</p>
           </div>
         </section>
@@ -151,7 +165,7 @@ const CustomerProfile = () => {
       </div>
       <div
         className="col-lg-9 col-md-8"
-        style={{ backgroundColor: "#f5f5f5", height: "auto" }}
+        style={{ backgroundColor: "#f5f5f5", height: "100vh" }}
       >
         <div className="tab-content" id="v-pills-tabContent">
           <MyAccount />

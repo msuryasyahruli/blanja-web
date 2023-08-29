@@ -23,7 +23,10 @@ const ProductHome = () => {
                 boxShadow: "0px 0px 10px #29292920, 0px 0px 25px #fff",
               }}
             >
-              <Link to={`/detail/${product.product_id}`} style={{color: "black"}}>
+              <Link
+                to={`/detail/${product.product_id}`}
+                style={{ color: "black" }}
+              >
                 <div className="p-1" style={{ height: "170px" }}>
                   <img
                     class="h-100 rounded"
@@ -35,7 +38,12 @@ const ProductHome = () => {
                 </div>
                 <div className="p-1">
                   <h6 className="card-title">{product.product_name}</h6>
-                  <h6 className="text-danger">Rp {product.product_price}</h6>
+                  <h6 className="text-danger">
+                    {new Intl.NumberFormat("Rp", {
+                      style: "currency",
+                      currency: "idr",
+                    }).format(product.product_price)}{" "}
+                  </h6>
                   <img src={stars} alt="stars" />{" "}
                 </div>
               </Link>

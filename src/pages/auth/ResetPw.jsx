@@ -8,7 +8,7 @@ const ResetPw = () => {
       <div className={`${style.body}`}>
         <section className={`${style.container}`}>
           <div className="title">
-            <img src={require("../../assets/image/Group 1158.png")} />
+            <img src={require("../../assets/image/Group 1158.png")} alt="logo" />
           </div>
           <div className={`${style.text}`}>
             <p>Reset password</p>

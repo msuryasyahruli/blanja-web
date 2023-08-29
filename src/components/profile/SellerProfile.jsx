@@ -6,7 +6,7 @@ const SellerProfile = () => {
   const [seller, setSeller] = useState([]);
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_KEY}/seller/${sellerId}`)
+      .get(`${process.env.REACT_APP_API_KEY}/seller/detail/${sellerId}`)
       .then((res) => {
         setSeller(res.data.data[0]);
       })

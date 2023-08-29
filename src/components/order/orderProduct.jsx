@@ -1,6 +1,20 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const OrderProduct = () => {
+  const customerId = localStorage.getItem("customerId");
+  const [orders, setOrders] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_KEY}/orders/${customerId}`)
+      .then((res) => {
+        setOrders(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [customerId]);
+
   return (
     <>
       <style>
@@ -47,177 +61,90 @@ const OrderProduct = () => {
             </p>
           </div>
         </section>
-        <section className="row" id="select_product">
-          <div className="col-md-7">
-            <div className="row">
-              <div
-                className="col-md-2 col-2"
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <input type="checkbox" />
-              </div>
-              <div
-                className="col-md-10 col-10"
-                style={{ display: "flex", alignItems: "center", padding: 5 }}
-              >
-                <img src={require("../../assets/image/Mask Group (3).png")} />
-                <label style={{ lineHeight: "normal", padding: 15 }}>
-                  <h6>Men's formal suit - Black</h6>
-                  <p style={{ fontSize: 12, color: "#9b9b9b" }}>Zalora Cloth</p>
-                </label>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-5">
-            <div className="row">
-              <div
-                className="col-md-6 col-8"
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <div className="amount" style={{ backgroundColor: "#d4d4d4" }}>
-                  <img src={require("../../assets/image/min.png")} />
-                </div>
-                <div className="amount">
-                  <h6>1</h6>
+        {orders.map((orders) => (
+          <section className="row" id="select_product">
+            <div className="col-md-7">
+              <div className="row">
+                <div
+                  className="col-md-2 col-2"
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <input type="checkbox" />
                 </div>
                 <div
-                  className="amount"
-                  style={{ boxShadow: "0px 0px 10px #29292940" }}
+                  className="col-md-10 col-10"
+                  style={{ display: "flex", alignItems: "center", padding: 5 }}
                 >
-                  <img src={require("../../assets/image/plus.png")} />
+                  <img
+                    src={orders.product_photo}
+                    alt="img"
+                    style={{
+                      width: 80,
+                      height: 80,
+                      objectFit: "cover",
+                      borderRadius: 10,
+                    }}
+                  />
+                  <label style={{ lineHeight: "normal", padding: 15 }}>
+                    <h6>{orders.product_name}</h6>
+                    <p style={{ fontSize: 12, color: "#9b9b9b" }}>
+                      Zalora Cloth
+                    </p>
+                  </label>
                 </div>
               </div>
-              <div
-                className="col-md-6 col-4"
-                style={{ textAlign: "center", paddingTop: 10 }}
-              >
-                <p style={{ fontWeight: 700, fontSize: 16 }}>Rp 80,000</p>
-              </div>
             </div>
-          </div>
-        </section>
-        <section className="row" id="select_product">
-          <div className="col-md-7">
-            <div className="row">
-              <div
-                className="col-md-2 col-2"
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <input type="checkbox" />
-              </div>
-              <div
-                className="col-md-10 col-10"
-                style={{ display: "flex", alignItems: "center", padding: 5 }}
-              >
-                <img src={require("../../assets/image/Mask Group (3).png")} />
-                <label style={{ lineHeight: "normal", padding: 15 }}>
-                  <h6>Men's formal suit - Black</h6>
-                  <p style={{ fontSize: 12, color: "#9b9b9b" }}>Zalora Cloth</p>
-                </label>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-5">
-            <div className="row">
-              <div
-                className="col-md-6 col-8"
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <div className="amount" style={{ backgroundColor: "#d4d4d4" }}>
-                  <img src={require("../../assets/image/min.png")} />
-                </div>
-                <div className="amount">
-                  <h6>1</h6>
+            <div className="col-md-5">
+              <div className="row">
+                <div
+                  className="col-md-6 col-8"
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <div
+                    className="amount"
+                    style={{ backgroundColor: "#d4d4d4" }}
+                  >
+                    <img
+                      src={require("../../assets/image/min.png")}
+                      alt="min"
+                    />
+                  </div>
+                  <div className="amount">
+                    <h6>1</h6>
+                  </div>
+                  <div
+                    className="amount"
+                    style={{ boxShadow: "0px 0px 10px #29292940" }}
+                  >
+                    <img
+                      src={require("../../assets/image/plus.png")}
+                      alt="plus"
+                    />
+                  </div>
                 </div>
                 <div
-                  className="amount"
-                  style={{ boxShadow: "0px 0px 10px #29292940" }}
+                  className="col-md-6 col-4"
+                  style={{ textAlign: "center", paddingTop: 10 }}
                 >
-                  <img src={require("../../assets/image/plus.png")} />
+                  <p style={{ fontWeight: 700, fontSize: 16 }}>
+                    {new Intl.NumberFormat("Rp", {
+                      style: "currency",
+                      currency: "idr",
+                    }).format(orders.product_price)}{" "}
+                  </p>
                 </div>
-              </div>
-              <div
-                className="col-md-6 col-4"
-                style={{ textAlign: "center", paddingTop: 10 }}
-              >
-                <p style={{ fontWeight: 700, fontSize: 16 }}>Rp 80,000</p>
               </div>
             </div>
-          </div>
-        </section>
-        <section className="row" id="select_product">
-          <div className="col-md-7">
-            <div className="row">
-              <div
-                className="col-md-2 col-2"
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <input type="checkbox" />
-              </div>
-              <div
-                className="col-md-10 col-10"
-                style={{ display: "flex", alignItems: "center", padding: 5 }}
-              >
-                <img src={require("../../assets/image/Mask Group (3).png")} />
-                <label style={{ lineHeight: "normal", padding: 15 }}>
-                  <h6>Men's formal suit - Black</h6>
-                  <p style={{ fontSize: 12, color: "#9b9b9b" }}>Zalora Cloth</p>
-                </label>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-5">
-            <div className="row">
-              <div
-                className="col-md-6 col-8"
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <div className="amount" style={{ backgroundColor: "#d4d4d4" }}>
-                  <img src={require("../../assets/image/min.png")} />
-                </div>
-                <div className="amount">
-                  <h6>1</h6>
-                </div>
-                <div
-                  className="amount"
-                  style={{ boxShadow: "0px 0px 10px #29292940" }}
-                >
-                  <img src={require("../../assets/image/plus.png")} />
-                </div>
-              </div>
-              <div
-                className="col-md-6 col-4"
-                style={{ textAlign: "center", paddingTop: 10 }}
-              >
-                <p style={{ fontWeight: 700, fontSize: 16 }}>Rp 80,000</p>
-              </div>
-            </div>
-          </div>
-        </section>
+          </section>
+        ))}
       </div>
     </>
   );

@@ -94,7 +94,7 @@ const CheckoutPayment = () => {
                   <p>Payment method</p>
                   <div className="payList">
                     <div>
-                      <img src={require("../../assets/image/gopay.png")} />
+                      <img src={require("../../assets/image/gopay.png")} alt="gopay" />
                     </div>
                     <div className="checkPayList">
                       <input type="checkbox" />
@@ -102,7 +102,7 @@ const CheckoutPayment = () => {
                   </div>
                   <div className="payList">
                     <div>
-                      <img src={require("../../assets/image/POS.png")} />
+                      <img src={require("../../assets/image/POS.png")} alt="pos" />
                     </div>
                     <div className="checkPayList">
                       <input type="checkbox" />
@@ -110,7 +110,7 @@ const CheckoutPayment = () => {
                   </div>
                   <div className="payList">
                     <div>
-                      <img src={require("../../assets/image/master card.png")} />
+                      <img src={require("../../assets/image/master card.png")} alt="master card" />
                     </div>
                     <div className="checkPayList">
                       <input type="checkbox" />

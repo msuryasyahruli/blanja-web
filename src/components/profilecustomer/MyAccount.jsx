@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const MyAccount = () => {
@@ -8,6 +9,56 @@ const MyAccount = () => {
     localStorage.clear();
     navigate("/login");
   };
+
+  const customerId = localStorage.getItem("customerId");
+  const [customer, setCustomer] = useState([]);
+  console.log(customer);
+  const handleChange = (e) => {
+    setCustomer({
+      ...customer,
+    });
+    // console.log(customer);
+  };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const formData = new FormData();
+  //   formData.append("customer_fullname", customer.customer_fullname);
+  //   formData.append("customer_email", customer.customer_email);
+  //   formData.append("customer_phone", customer.customer_phone);
+  //   formData.append("store_name", customer.store_name);
+  //   formData.append("store_description", customer.store_description);
+  //   axios
+  //     .put(
+  //       `${process.env.REACT_APP_API_KEY}/customer/${customerId}`,
+  //       formData,
+  //       {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data",
+  //         },
+  //       },
+  //       [customerId]
+  //     )
+  //     .then((res) => {
+  //       console.log(res);
+  //       alert("product updated");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       alert(err);
+  //     });
+  // };
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_KEY}/customer/detail/${customerId}`)
+      .then((res) => {
+        setCustomer(res.data.data[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [customerId]);
 
   return (
     <>
@@ -73,30 +124,51 @@ const MyAccount = () => {
                 </div>
               </section>
               <section className="m-3 col-xl-8">
-                <div className="row">
-                  <div className="col-md-4">
-                    <h6>Name</h6>
+                {/* <form onSubmit={handleSubmit}> */}
+                  <div className="row">
+                    <div className="col-md-4">
+                      <h6>Name</h6>
+                    </div>
+                    <div className="col-md-8 profileIn">
+                      <input
+                        type="text"
+                        placeholder="Name"
+                        name="customer_name"
+                        value={customer.customer_fullname}
+                        onChange={handleChange}
+                      />
+                    </div>
                   </div>
-                  <div className="col-md-8 profileIn">
-                    <input type="text" placeholder="Name" />
+                  <div className="row">
+                    <div className="col-md-4">
+                      <h6>Email</h6>
+                    </div>
+                    <div className="col-md-8 profileIn">
+                      <input
+                        type="text"
+                        placeholder="example@gmail.com"
+                        value={customer.customer_email}
+                        onChange={handleChange}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-4">
-                    <h6>Email</h6>
+                  <div className="row">
+                    <div className="col-md-4">
+                      <h6>Phone number</h6>
+                    </div>
+                    <div className="col-md-8 profileIn">
+                      <input
+                        type="text"
+                        placeholder="08xxxxxxxxxx"
+                        value={customer.customer_phone}
+                        onChange={handleChange}
+                      />
+                    </div>
                   </div>
-                  <div className="col-md-8 profileIn">
-                    <input type="text" placeholder="example@gmail.com" />
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-4">
-                    <h6>Phone number</h6>
-                  </div>
-                  <div className="col-md-8 profileIn">
-                    <input type="text" placeholder="08xxxxxxxxxx" />
-                  </div>
-                </div>
+                  {/* <button type="submit" className="btn btn-primary">
+                    Update
+                  </button> */}
+                {/* </form> */}
               </section>
             </div>
           </section>

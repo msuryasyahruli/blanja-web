@@ -28,11 +28,13 @@ const CategoryIndicators = () => {
                   src={shirt}
                   className="d-block w-100"
                   style={{ padding: "5%" }}
+                  alt="shirt"
                 />
               </div>
               <div>
                 <img
                   src={short}
+                  alt="short"
                   className="d-block w-100"
                   style={{ padding: "5%" }}
                 />
@@ -40,6 +42,7 @@ const CategoryIndicators = () => {
               <div>
                 <img
                   src={jacket}
+                  alt="jacket"
                   className="d-block w-100"
                   style={{ padding: "5%" }}
                 />
@@ -47,6 +50,7 @@ const CategoryIndicators = () => {
               <div>
                 <img
                   src={pants}
+                  alt="pants"
                   className="d-block w-100"
                   style={{ padding: "5%" }}
                 />
@@ -54,6 +58,7 @@ const CategoryIndicators = () => {
               <div>
                 <img
                   src={shoes}
+                  alt="shoes"
                   className="d-block w-100"
                   style={{ padding: "5%" }}
                 />
@@ -67,6 +72,7 @@ const CategoryIndicators = () => {
               <div>
                 <img
                   src={heels}
+                  alt="heels"
                   className="d-block w-100"
                   style={{ padding: "5%" }}
                 />
@@ -74,6 +80,7 @@ const CategoryIndicators = () => {
               <div>
                 <img
                   src={wristwatch}
+                  alt="wristwatch"
                   className="d-block w-100"
                   style={{ padding: "5%" }}
                 />
@@ -81,6 +88,7 @@ const CategoryIndicators = () => {
               <div>
                 <img
                   src={handbag}
+                  alt="handbag"
                   className="d-block w-100"
                   style={{ padding: "5%" }}
                 />
@@ -88,6 +96,7 @@ const CategoryIndicators = () => {
               <div>
                 <img
                   src={bagback}
+                  alt="bagback"
                   className="d-block w-100"
                   style={{ padding: "5%" }}
                 />
@@ -95,6 +104,7 @@ const CategoryIndicators = () => {
               <div>
                 <img
                   src={socks}
+                  alt="socks"
                   className="d-block w-100"
                   style={{ padding: "5%" }}
                 />

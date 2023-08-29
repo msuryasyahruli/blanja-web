@@ -7,7 +7,7 @@ import Pagination from "../pagination/pagination";
 // import SingleColumnDemo from "../sorting/sorting";
 
 const ListProduct = () => {
-  const sellerId = localStorage.getItem('sellerId');
+  const sellerId = localStorage.getItem("sellerId");
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
@@ -87,7 +87,12 @@ const ListProduct = () => {
                 style={{ lineHeight: "20%", padding: 5 }}
               >
                 <h6>{product.product_name}</h6>
-                <h6>Rp. {product.product_price}</h6>
+                <h6>
+                  {new Intl.NumberFormat("Rp", {
+                    style: "currency",
+                    currency: "idr",
+                  }).format(product.product_price)}{" "}
+                </h6>
                 <h6>Stock : {product.product_stock}</h6>
                 <h6>Category : {product.category_id}</h6>
               </div>

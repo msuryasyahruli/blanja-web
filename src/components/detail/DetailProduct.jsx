@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Addproducts from "./Addproducts";
+import BuyProduct from "./BuyProduct";
 
 const DetailProduct = () => {
   const { id } = useParams();
@@ -15,6 +17,7 @@ const DetailProduct = () => {
         console.log(err);
       });
   }, [id]);
+  
   return (
     <>
       <style>
@@ -23,7 +26,7 @@ const DetailProduct = () => {
         align-items: center; border-radius: 100%;
         {"}"}
       </style>
-      <div className="row">
+      <div className="row pt-5">
         <section className="col-lg-4">
           <div>
             <img
@@ -36,19 +39,25 @@ const DetailProduct = () => {
         </section>
         <section className="col-lg-8">
           <p style={{ fontSize: 28, fontWeight: 600 }}>
-          {product.product_name}
+            {product.product_name}
             <br />
             <span style={{ fontSize: 16, fontWeight: 500, color: "#9b9b9b" }}>
               Zalora Cloth
             </span>
             <br />
-            <img src={require("../../assets/image/Rating 5 stars.png")} alt="stars"/>
+            <img
+              src={require("../../assets/image/Rating 5 stars.png")}
+              alt="stars"
+            />
           </p>
           <p style={{ color: "#9b9b9b" }}>
             Price
             <br />
             <span style={{ fontSize: 33, fontWeight: 700, color: "black" }}>
-              Rp {product.product_price}
+              {new Intl.NumberFormat("Rp", {
+                style: "currency",
+                currency: "idr",
+              }).format(product.product_price)}
             </span>
           </p>
           <div>
@@ -110,7 +119,7 @@ const DetailProduct = () => {
                 }}
               >
                 <div className="amount" style={{ backgroundColor: "#d4d4d4" }}>
-                  <img src={require("../../assets/image/min.png")} alt="min"/>
+                  <img src={require("../../assets/image/min.png")} alt="min" />
                 </div>
                 <div className="amount">
                   <h6>26</h6>
@@ -119,7 +128,10 @@ const DetailProduct = () => {
                   className="amount"
                   style={{ boxShadow: "0px 0px 10px #29292940" }}
                 >
-                  <img src={require("../../assets/image/plus.png")}alt="plus" />
+                  <img
+                    src={require("../../assets/image/plus.png")}
+                    alt="plus"
+                  />
                 </div>
               </div>
             </div>
@@ -143,66 +155,35 @@ const DetailProduct = () => {
                   className="amount"
                   style={{ boxShadow: "0px 0px 10px #29292940" }}
                 >
-                  <img src={require("../../assets/image/plus.png")} alt="plus" />
+                  <img
+                    src={require("../../assets/image/plus.png")}
+                    alt="plus"
+                  />
                 </div>
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-sm-3 col-6" style={{ padding: 10 }}>
-              <p
+              <button
+                className="d-flex justify-content-center align-items-center w-100"
                 style={{
                   height: 48,
-                  width: "100%",
                   fontSize: 14,
                   fontWeight: 500,
-                  margin: 0,
                   borderRadius: 50,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
+                  border: 0,
                   backgroundColor: "#efefef",
                 }}
               >
                 Chat
-              </p>
+              </button>
             </div>
             <div className="col-sm-3 col-6" style={{ padding: 10 }}>
-              <p
-                style={{
-                  height: 48,
-                  width: "auto",
-                  fontSize: 14,
-                  fontWeight: 500,
-                  margin: 0,
-                  borderRadius: 50,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  backgroundColor: "#efefef",
-                }}
-              >
-                Add bag
-              </p>
+              <Addproducts/>
             </div>
             <div className="col-sm-6" style={{ padding: 10 }}>
-              <p
-                style={{
-                  height: 48,
-                  width: "auto",
-                  fontSize: 14,
-                  fontWeight: 500,
-                  margin: 0,
-                  borderRadius: 50,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  backgroundColor: "#db3022",
-                  color: "#efefef",
-                }}
-              >
-                Buy Now
-              </p>
+              <BuyProduct/>
             </div>
           </div>
         </section>

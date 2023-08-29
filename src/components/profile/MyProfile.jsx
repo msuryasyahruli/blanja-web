@@ -19,18 +19,19 @@ const MyProfile = () => {
     setSeller({
       ...seller,
     });
-    console.log(seller);
+    // console.log(seller);
   };
+
   // const handleSubmit = (e) => {
   //   e.preventDefault();
-  //   const formData = new FormData();
-  //   formData.append("seller_fullname", seller.seller_fullname);
-  //   formData.append("seller_email", seller.seller_email);
-  //   formData.append("seller_phone", seller.seller_phone);
-  //   formData.append("store_name", seller.store_name);
-  //   formData.append("store_description", seller.store_description);
+    // const formData = new FormData();
+    // formData.append("seller_fullname", seller.seller_fullname);
+    // formData.append("seller_email", seller.seller_email);
+    // formData.append("seller_phone", seller.seller_phone);
+    // formData.append("store_name", seller.store_name);
+    // formData.append("store_description", seller.store_description);
   //   axios
-  //     .put(`${process.env.REACT_APP_API_KEY}/seller/${sellerId}`, formData, {
+  //     .put(`${process.env.REACT_APP_API_KEY}/seller/${sellerId}`, seller, {
   //       headers: {
   //         "Content-Type": "multipart/form-data",
   //       },
@@ -47,7 +48,7 @@ const MyProfile = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_KEY}/seller/${sellerId}`)
+      .get(`${process.env.REACT_APP_API_KEY}/seller/detail/${sellerId}`)
       .then((res) => {
         setSeller(res.data.data[0]);
       })
@@ -178,9 +179,9 @@ const MyProfile = () => {
                           />
                         </div>
                       </div>
-                      <button type="submit" className="btn btn-primary">
+                      {/* <button type="submit" className="btn btn-primary">
                         Update
-                      </button>
+                      </button> */}
                     {/* </form> */}
                   </section>
                 </div>

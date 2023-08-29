@@ -30,7 +30,6 @@ const Profile = () => {
           <div className="container">
             <div className="row">
               <CustomerProfile/>
-              {/* <MyAccount/> */}
             </div>
           </div>
         </main>

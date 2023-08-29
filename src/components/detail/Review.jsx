@@ -19,30 +19,35 @@ const Review = () => {
               <img
                 src={require("../../assets/image/Star.png")}
                 style={{ width: "100%" }}
+                alt="star"
               />
             </div>
             <div style={{ width: "22.29px" }}>
               <img
                 src={require("../../assets/image/Star.png")}
                 style={{ width: "100%" }}
+                alt="star"
               />
             </div>
             <div style={{ width: "22.29px" }}>
               <img
                 src={require("../../assets/image/Star.png")}
                 style={{ width: "100%" }}
+                alt="star"
               />
             </div>
             <div style={{ width: "22.29px" }}>
               <img
                 src={require("../../assets/image/Star.png")}
                 style={{ width: "100%" }}
+                alt="star"
               />
             </div>
             <div style={{ width: "22.29px" }}>
               <img
                 src={require("../../assets/image/Star.png")}
                 style={{ width: "100%" }}
+                alt="star"
               />
             </div>
           </div>
@@ -57,7 +62,7 @@ const Review = () => {
             }}
           >
             <div>
-              <img src={require("../../assets/image/Star.png")} />
+              <img src={require("../../assets/image/Star.png")} alt="star" />
             </div>
             <div>
               <p style={{ height: 5 }}>5</p>
@@ -81,7 +86,7 @@ const Review = () => {
             }}
           >
             <div>
-              <img src={require("../../assets/image/Star.png")} />
+              <img src={require("../../assets/image/Star.png")} alt="star" />
             </div>
             <div>
               <p style={{ height: 5 }}>4</p>
@@ -105,7 +110,7 @@ const Review = () => {
             }}
           >
             <div>
-              <img src={require("../../assets/image/Star.png")} />
+              <img src={require("../../assets/image/Star.png")} alt="star" />
             </div>
             <div>
               <p style={{ height: 5 }}>3</p>
@@ -129,7 +134,7 @@ const Review = () => {
             }}
           >
             <div>
-              <img src={require("../../assets/image/Star.png")} />
+              <img src={require("../../assets/image/Star.png")} alt="star" />
             </div>
             <div>
               <p style={{ height: 5 }}>2</p>
@@ -153,7 +158,7 @@ const Review = () => {
             }}
           >
             <div>
-              <img src={require("../../assets/image/Star.png")} />
+              <img src={require("../../assets/image/Star.png")} alt="star" />
             </div>
             <div>
               <p style={{ height: 5 }}>1</p>

@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CheckoutPayment from "./checkoutPayment";
+import axios from "axios";
 
 const CheckoutProduct = () => {
+  const customerId = localStorage.getItem("customerId");
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_KEY}/orders/${customerId}`)
+      .then((res) => {
+        setData(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [customerId]);
+
   return (
     <>
       <style>
@@ -30,72 +44,44 @@ const CheckoutProduct = () => {
               <button>Choose another address</button>
             </div>
           </section>
-          <section className="row" id="select_product">
-            <div className="col-sm-10 col-10" style={{ padding: "3%" }}>
-              <div>
-                <img src={require("../../assets/image/Mask Group (3).png")} />
-                <label style={{ lineHeight: "5px", padding: 10 }}>
-                  <h6>Men's formal suit - Black</h6>
-                  <p style={{ fontSize: 12, color: "#9b9b9b" }}>Zalora Cloth</p>
-                </label>
+          {data.map((data) => (
+            <section className="row" id="select_product">
+              <div className="col-sm-9 col-8" style={{ padding: "3%" }}>
+                <div>
+                  <img
+                    src={data.product_photo}
+                    alt="img"
+                    style={{
+                      width: 80,
+                      height: 80,
+                      objectFit: "cover",
+                      borderRadius: 10,
+                    }}
+                  />
+                  <label style={{ lineHeight: "5px", padding: 10 }}>
+                    <h6>{data.product_name}</h6>
+                    <p style={{ fontSize: 12, color: "#9b9b9b" }}>
+                      Zalora Cloth
+                    </p>
+                  </label>
+                </div>
               </div>
-            </div>
-            <div className="col-sm-2 col-2" style={{ padding: "3%" }}>
-              <p
-                style={{
-                  fontWeight: 700,
-                  fontSize: 16,
-                  textAlign: "center",
-                }}
-              >
-                Rp 80,000
-              </p>
-            </div>
-          </section>
-          <section className="row" id="select_product">
-            <div className="col-sm-10 col-10" style={{ padding: "3%" }}>
-              <div>
-                <img src={require("../../assets/image/Mask Group (3).png")} />
-                <label style={{ lineHeight: "5px", padding: 10 }}>
-                  <h6>Men's formal suit - Black</h6>
-                  <p style={{ fontSize: 12, color: "#9b9b9b" }}>Zalora Cloth</p>
-                </label>
+              <div className="col-sm-3 col-4" style={{ padding: "3%" }}>
+                <p
+                  style={{
+                    fontWeight: 700,
+                    fontSize: 16,
+                    textAlign: "center",
+                  }}
+                >
+                  {new Intl.NumberFormat("Rp", {
+                      style: "currency",
+                      currency: "idr",
+                    }).format(data.product_price)}{" "}
+                </p>
               </div>
-            </div>
-            <div className="col-sm- col-2" style={{ padding: "3%" }}>
-              <p
-                style={{
-                  fontWeight: 700,
-                  fontSize: 16,
-                  textAlign: "center",
-                }}
-              >
-                Rp 80,000
-              </p>
-            </div>
-          </section>
-          <section className="row" id="select_product">
-            <div className="col-sm-10 col-10" style={{ padding: "3%" }}>
-              <div>
-                <img src={require("../../assets/image/Mask Group (3).png")} />
-                <label style={{ lineHeight: "5px", padding: 10 }}>
-                  <h6>Men's formal suit - Black</h6>
-                  <p style={{ fontSize: 12, color: "#9b9b9b" }}>Zalora Cloth</p>
-                </label>
-              </div>
-            </div>
-            <div className="col-sm-2 col-2" style={{ padding: "3%" }}>
-              <p
-                style={{
-                  fontWeight: 700,
-                  fontSize: 16,
-                  textAlign: "center",
-                }}
-              >
-                Rp 80,000
-              </p>
-            </div>
-          </section>
+            </section>
+          ))}
         </div>
         <div className="col-lg-4">
           <CheckoutPayment />
