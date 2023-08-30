@@ -12,7 +12,7 @@ const MyAccount = () => {
 
   const customerId = localStorage.getItem("customerId");
   const [customer, setCustomer] = useState([]);
-  console.log(customer);
+  // console.log(customer);
   const handleChange = (e) => {
     setCustomer({
       ...customer,
@@ -136,6 +136,7 @@ const MyAccount = () => {
                         name="customer_name"
                         value={customer.customer_fullname}
                         onChange={handleChange}
+                        style={{ border: '1px solid black', padding: 10 }}
                       />
                     </div>
                   </div>
@@ -149,6 +150,7 @@ const MyAccount = () => {
                         placeholder="example@gmail.com"
                         value={customer.customer_email}
                         onChange={handleChange}
+                        style={{ border: '1px solid black', padding: 10 }}
                       />
                     </div>
                   </div>
@@ -162,6 +164,7 @@ const MyAccount = () => {
                         placeholder="08xxxxxxxxxx"
                         value={customer.customer_phone}
                         onChange={handleChange}
+                        style={{ border: '1px solid black', padding: 10 }}
                       />
                     </div>
                   </div>

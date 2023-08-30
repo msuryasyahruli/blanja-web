@@ -24,12 +24,12 @@ const MyProfile = () => {
 
   // const handleSubmit = (e) => {
   //   e.preventDefault();
-    // const formData = new FormData();
-    // formData.append("seller_fullname", seller.seller_fullname);
-    // formData.append("seller_email", seller.seller_email);
-    // formData.append("seller_phone", seller.seller_phone);
-    // formData.append("store_name", seller.store_name);
-    // formData.append("store_description", seller.store_description);
+  // const formData = new FormData();
+  // formData.append("seller_fullname", seller.seller_fullname);
+  // formData.append("seller_email", seller.seller_email);
+  // formData.append("seller_phone", seller.seller_phone);
+  // formData.append("store_name", seller.store_name);
+  // formData.append("store_description", seller.store_description);
   //   axios
   //     .put(`${process.env.REACT_APP_API_KEY}/seller/${sellerId}`, seller, {
   //       headers: {
@@ -127,59 +127,63 @@ const MyProfile = () => {
                   </section>
                   <section className="m-3 col-xl-8">
                     {/* <form onSubmit={handleSubmit}> */}
-                      <div className="row">
-                        <div className="col-md-4">
-                          <h6>Store name</h6>
-                        </div>
-                        <div className="col-md-8 profileIn">
-                          <input
-                            type="text"
-                            placeholder="Store name"
-                            value={seller.store_name}
-                            onChange={handleChange}
-                          />
-                        </div>
+                    <div className="row">
+                      <div className="col-md-4">
+                        <h6>Store name</h6>
                       </div>
-                      <div className="row">
-                        <div className="col-md-4">
-                          <h6>Email</h6>
-                        </div>
-                        <div className="col-md-8 profileIn">
-                          <input
-                            type="text"
-                            placeholder="example@gmail.com"
-                            value={seller.seller_email}
-                            onChange={handleChange}
-                          />
-                        </div>
+                      <div className="col-md-8 profileIn">
+                        <input
+                          type="text"
+                          placeholder="Store name"
+                          value={seller.store_name}
+                          onChange={handleChange}
+                          style={{ border: "1px solid black", padding: 10 }}
+                        />
                       </div>
-                      <div className="row">
-                        <div className="col-md-4">
-                          <h6>Phone number</h6>
-                        </div>
-                        <div className="col-md-8 profileIn">
-                          <input
-                            type="text"
-                            placeholder="08xxxxxxxxxx"
-                            value={seller.seller_phone}
-                            onChange={handleChange}
-                          />
-                        </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-md-4">
+                        <h6>Email</h6>
                       </div>
-                      <div className="row">
-                        <div className="col-md-4">
-                          <h6>Store description</h6>
-                        </div>
-                        <div className="col-md-8 profileIn">
-                          <input
-                            type="text"
-                            placeholder="Store description"
-                            value={seller.store_description}
-                            onChange={handleChange}
-                          />
-                        </div>
+                      <div className="col-md-8 profileIn">
+                        <input
+                          type="text"
+                          placeholder="example@gmail.com"
+                          value={seller.seller_email}
+                          onChange={handleChange}
+                          style={{ border: "1px solid black", padding: 10 }}
+                        />
                       </div>
-                      {/* <button type="submit" className="btn btn-primary">
+                    </div>
+                    <div className="row">
+                      <div className="col-md-4">
+                        <h6>Phone number</h6>
+                      </div>
+                      <div className="col-md-8 profileIn">
+                        <input
+                          type="text"
+                          placeholder="08xxxxxxxxxx"
+                          value={seller.seller_phone}
+                          onChange={handleChange}
+                          style={{ border: "1px solid black", padding: 10 }}
+                        />
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-md-4">
+                        <h6>Store description</h6>
+                      </div>
+                      <div className="col-md-8 profileIn">
+                        <input
+                          type="text"
+                          placeholder="Store description"
+                          value={seller.store_description}
+                          onChange={handleChange}
+                          style={{ border: "1px solid black", padding: 10 }}
+                        />
+                      </div>
+                    </div>
+                    {/* <button type="submit" className="btn btn-primary">
                         Update
                       </button> */}
                     {/* </form> */}

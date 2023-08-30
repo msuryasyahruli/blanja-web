@@ -115,7 +115,7 @@ function ModalUpdate({
               name="product_photo"
               onChange={handleUpload}
             />
-            <input
+            <textarea
               type="text"
               className="form-control mt-3"
               placeholder="description"
