@@ -105,6 +105,15 @@ REACT_APP_API_KEY = [BACKEND_URL]
     <td>Login as Customer</td>
     <td>Login as Seller</td>
   </tr>
+  </tr>
+   <tr>
+    <td><img width="350px" src="https://github.com/msuryasyahruli/blanja-web/blob/master/src/assets/screenshot/home.JPG"  border="0" border="0" alt="1" /></td>
+    <td> <img width="350px" src="https://github.com/msuryasyahruli/blanja-web/blob/master/src/assets/screenshot/detail.JPG" \ border="0"  border="0"  border="0"  alt="2" /></td>
+  </tr>
+   <tr>
+    <td>Home page</td>
+    <td>Detail product page</td>
+  </tr>
    <tr>
     <td><img width="350px" src="https://github.com/msuryasyahruli/blanja-web/blob/master/src/assets/screenshot/customerProfile.JPG"  border="0" border="0" alt="1" /></td>
     <td> <img width="350px" src="https://github.com/msuryasyahruli/blanja-web/blob/master/src/assets/screenshot/sellerProfileStore.JPG" \ border="0"  border="0"  border="0"  alt="2" /></td>
@@ -128,7 +137,7 @@ REACT_APP_API_KEY = [BACKEND_URL]
    <tr>
     <td>Orders as Customer</td>
     <td>Selling as Seller</td>
-  </tr>
+  
 </table>
 <!-- CONTRIBUTING -->
 
