@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import swal from "sweetalert";
 
 const OrderProduct = () => {
   const customerId = localStorage.getItem("customerId");
@@ -14,6 +15,23 @@ const OrderProduct = () => {
         console.log(err);
       });
   }, [customerId]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .delete(`${process.env.REACT_APP_API_KEY}/orders/${customerId}`)
+      .then((res) => {
+        swal({
+          title: "Success",
+          text: "Product Deleted",
+          icon: "success"
+        });
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <>
@@ -50,15 +68,20 @@ const OrderProduct = () => {
             </label>
           </div>
           <div className="col-md-2 col-4">
-            <p
-              style={{
-                textAlign: "center",
-                margin: "15px 0",
-                color: "#db3022",
-              }}
-            >
-              Delete
-            </p>
+            <form onSubmit={handleSubmit}>
+              <button
+                type="submit"
+                style={{
+                  textAlign: "center",
+                  margin: "15px 0",
+                  color: "#db3022",
+                  border: 0,
+                  backgroundColor: "transparent",
+                }}
+              >
+                Delete
+              </button>
+            </form>
           </div>
         </section>
         {orders.map((orders) => (

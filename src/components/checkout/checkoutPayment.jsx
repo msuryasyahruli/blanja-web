@@ -1,6 +1,24 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const CheckoutPayment = () => {
+  const customerId = localStorage.getItem("customerId");
+  const [orders, setOrders] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_KEY}/orders/${customerId}`)
+      .then((res) => {
+        setOrders(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [customerId]);
+
+  let total = orders.reduce((val, element) => {
+    return val + element.product_price;
+  }, 0);
+
   return (
     <>
       <style>
@@ -34,7 +52,10 @@ const CheckoutPayment = () => {
                 color: "#222222",
               }}
             >
-              Rp 240,000
+              {new Intl.NumberFormat("Rp", {
+                style: "currency",
+                currency: "idr",
+              }).format(total)}{" "}
             </p>
           </div>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -46,7 +67,10 @@ const CheckoutPayment = () => {
                 color: "#222222",
               }}
             >
-              Rp 10,000
+              {new Intl.NumberFormat("Rp", {
+                style: "currency",
+                currency: "idr",
+              }).format(12000)}{" "}
             </p>
           </div>
         </div>
@@ -56,7 +80,10 @@ const CheckoutPayment = () => {
             Total price
           </p>
           <p style={{ fontWeight: 500, fontSize: 18, color: "#db3022" }}>
-            Rp 250,000
+            {new Intl.NumberFormat("Rp", {
+              style: "currency",
+              currency: "idr",
+            }).format(total + 12000)}{" "}
           </p>
         </div>
         <button
@@ -94,7 +121,10 @@ const CheckoutPayment = () => {
                   <p>Payment method</p>
                   <div className="payList">
                     <div>
-                      <img src={require("../../assets/image/gopay.png")} alt="gopay" />
+                      <img
+                        src={require("../../assets/image/gopay.png")}
+                        alt="gopay"
+                      />
                     </div>
                     <div className="checkPayList">
                       <input type="checkbox" />
@@ -102,7 +132,10 @@ const CheckoutPayment = () => {
                   </div>
                   <div className="payList">
                     <div>
-                      <img src={require("../../assets/image/POS.png")} alt="pos" />
+                      <img
+                        src={require("../../assets/image/POS.png")}
+                        alt="pos"
+                      />
                     </div>
                     <div className="checkPayList">
                       <input type="checkbox" />
@@ -110,7 +143,10 @@ const CheckoutPayment = () => {
                   </div>
                   <div className="payList">
                     <div>
-                      <img src={require("../../assets/image/master card.png")} alt="master card" />
+                      <img
+                        src={require("../../assets/image/master card.png")}
+                        alt="master card"
+                      />
                     </div>
                     <div className="checkPayList">
                       <input type="checkbox" />
@@ -138,7 +174,10 @@ const CheckoutPayment = () => {
                           color: "#222222",
                         }}
                       >
-                        Rp 240,000
+                        {new Intl.NumberFormat("Rp", {
+                          style: "currency",
+                          currency: "idr",
+                        }).format(total)}{" "}
                       </p>
                     </div>
                     <div
@@ -155,7 +194,10 @@ const CheckoutPayment = () => {
                           color: "#222222",
                         }}
                       >
-                        Rp 10,000
+                        {new Intl.NumberFormat("Rp", {
+                          style: "currency",
+                          currency: "idr",
+                        }).format(12000)}{" "}
                       </p>
                     </div>
                   </div>
@@ -177,7 +219,12 @@ const CheckoutPayment = () => {
                       >
                         Total price
                         <br />
-                        <span style={{ color: "#db3022" }}>Rp 250,000</span>
+                        <span style={{ color: "#db3022" }}>
+                          {new Intl.NumberFormat("Rp", {
+                            style: "currency",
+                            currency: "idr",
+                          }).format(total + 12000)}{" "}
+                        </span>
                       </p>
                     </div>
                     <a href="./checkout.html">

@@ -24,6 +24,7 @@ const MyAccount = () => {
       .then((res) => {
         setCustomer(res);
         alert("Profile updated");
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);

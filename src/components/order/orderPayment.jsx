@@ -1,7 +1,25 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const OrderPayment = () => {
+  const customerId = localStorage.getItem("customerId");
+  const [orders, setOrders] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_KEY}/orders/${customerId}`)
+      .then((res) => {
+        setOrders(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [customerId]);
+
+  let total = orders.reduce((val, element) => {
+    return val + element.product_price;
+  }, 0);
+
   return (
     <>
       <style>
@@ -38,12 +56,17 @@ const OrderPayment = () => {
                   color: "#222222",
                 }}
               >
-                Rp 240,000
+                {new Intl.NumberFormat("Rp", {
+                  style: "currency",
+                  currency: "idr",
+                }).format(total)}{" "}
               </p>
             </div>
             <div>
               <a href="./checkout.html">
-                <Link to="/checkout"><button className="button_buy">Buy</button></Link>
+                <Link to="/checkout">
+                  <button className="button_buy">Buy</button>
+                </Link>
               </a>
             </div>
           </div>
