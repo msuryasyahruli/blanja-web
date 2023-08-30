@@ -16,16 +16,12 @@ const updateProductAction = (data, product_id, photo, setShow) => async (dispatc
       },
     });
     const result = products.data;
-    console.log(products);
     swal({
-      title: "Product Success",
+      title: "Success",
       text: "Product Updated",
       icon: "success",
       buttons: "Ok",
     })
-    // .then(()=>{
-    //   window.location.reload()
-    // });
     setShow(false);
     dispatch({ type: "UPDATE_PRODUCT", payload: result })
   } catch (err) {

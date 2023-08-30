@@ -1,50 +1,37 @@
 import React, { useEffect, useState } from "react";
 import ListProduct from "./listProduct";
 import SellingProduct from "./SellingProduct";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const MyProfile = () => {
-  const navigate = useNavigate();
-
-  const isLogout = () => {
-    localStorage.clear();
-    navigate("/login");
-  };
-
   const sellerId = localStorage.getItem("sellerId");
-  const [seller, setSeller] = useState([]);
+  const [seller, setSeller] = useState({
+    store_name: "",
+    seller_email: "",
+    seller_phone: "",
+    store_description: "",
+  });
 
   const handleChange = (e) => {
     setSeller({
       ...seller,
+      [e.target.name]: e.target.value,
     });
-    // console.log(seller);
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  // const formData = new FormData();
-  // formData.append("seller_fullname", seller.seller_fullname);
-  // formData.append("seller_email", seller.seller_email);
-  // formData.append("seller_phone", seller.seller_phone);
-  // formData.append("store_name", seller.store_name);
-  // formData.append("store_description", seller.store_description);
-  //   axios
-  //     .put(`${process.env.REACT_APP_API_KEY}/seller/${sellerId}`, seller, {
-  //       headers: {
-  //         "Content-Type": "multipart/form-data",
-  //       },
-  //     },[sellerId])
-  //     .then((res) => {
-  //       console.log(res);
-  //       alert("product updated");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       alert(err);
-  //     });
-  // };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await axios
+      .put(`${process.env.REACT_APP_API_KEY}/seller/${sellerId}`, seller)
+      .then((res) => {
+        setSeller(res);
+        alert("Profile updated");
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(err);
+      });
+  };
 
   useEffect(() => {
     axios
@@ -92,122 +79,119 @@ const MyProfile = () => {
                 </div>
                 <div className="row">
                   <section
-                    className="m-3 col-xl-3 row align-items-center"
-                    style={{ display: "grid" }}
+                    className="m-3 col-xl-3 row d-flex justify-content-center pt-3"
                   >
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <img
-                        src={require("../../assets/image/fotoprofile110.png")}
-                        alt="profile"
-                      />
-                    </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        marginTop: 20,
-                      }}
-                    >
-                      <button
+                    <div>
+                      <div
                         style={{
-                          width: 140,
-                          height: 36,
-                          borderRadius: 50,
-                          border: 0,
+                          display: "flex",
+                          justifyContent: "center",
                         }}
                       >
-                        Select image
-                      </button>
+                        <img
+                          src={require("../../assets/image/fotoprofile110.png")}
+                          alt="profile"
+                        />
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          marginTop: 20,
+                        }}
+                      >
+                        <button
+                          style={{
+                            width: 140,
+                            height: 36,
+                            borderRadius: 50,
+                            border: 0,
+                          }}
+                        >
+                          Select image
+                        </button>
+                      </div>
                     </div>
                   </section>
                   <section className="m-3 col-xl-8">
-                    {/* <form onSubmit={handleSubmit}> */}
-                    <div className="row">
-                      <div className="col-md-4">
-                        <h6>Store name</h6>
+                    <form onSubmit={handleSubmit}>
+                      <div className="row">
+                        <div className="col-md-4 d-flex align-items-center justify-content-end">
+                          <h6>Store name</h6>
+                        </div>
+                        <div className="col-md-8 profileIn">
+                          <input
+                            type="text"
+                            placeholder="Store name"
+                            name="store_name"
+                            value={seller.store_name}
+                            onChange={handleChange}
+                            style={{ border: "1px solid black", padding: 10 }}
+                          />
+                        </div>
                       </div>
-                      <div className="col-md-8 profileIn">
-                        <input
-                          type="text"
-                          placeholder="Store name"
-                          value={seller.store_name}
-                          onChange={handleChange}
-                          style={{ border: "1px solid black", padding: 10 }}
-                        />
+                      <div className="row">
+                        <div className="col-md-4 d-flex align-items-center justify-content-end">
+                          <h6>Email</h6>
+                        </div>
+                        <div className="col-md-8 profileIn">
+                          <input
+                            type="text"
+                            placeholder="example@gmail.com"
+                            name="seller_email"
+                            value={seller.seller_email}
+                            onChange={handleChange}
+                            style={{ border: "1px solid black", padding: 10 }}
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-4">
-                        <h6>Email</h6>
+                      <div className="row">
+                        <div className="col-md-4 d-flex align-items-center justify-content-end">
+                          <h6>Phone number</h6>
+                        </div>
+                        <div className="col-md-8 profileIn">
+                          <input
+                            type="text"
+                            placeholder="08xxxxxxxxxx"
+                            name="seller_phone"
+                            value={seller.seller_phone}
+                            onChange={handleChange}
+                            style={{ border: "1px solid black", padding: 10 }}
+                          />
+                        </div>
                       </div>
-                      <div className="col-md-8 profileIn">
-                        <input
-                          type="text"
-                          placeholder="example@gmail.com"
-                          value={seller.seller_email}
-                          onChange={handleChange}
-                          style={{ border: "1px solid black", padding: 10 }}
-                        />
+                      <div className="row">
+                        <div className="col-md-4 d-flex align-items-center justify-content-end">
+                          <h6>Store description</h6>
+                        </div>
+                        <div className="col-md-8 profileIn">
+                          <textarea
+                            type="text"
+                            placeholder="Store description"
+                            name="store_description"
+                            value={seller.store_description}
+                            onChange={handleChange}
+                            style={{
+                              border: "1px solid black",
+                              padding: 10,
+                              width: "100%",
+                              borderRadius: 5,
+                            }}
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-4">
-                        <h6>Phone number</h6>
+                      <div className="d-flex justify-content-end pt-2">
+                        <button
+                          type="submit"
+                          style={{ width: 100, height: 40, borderRadius: 100 }}
+                        >
+                          Update
+                        </button>
                       </div>
-                      <div className="col-md-8 profileIn">
-                        <input
-                          type="text"
-                          placeholder="08xxxxxxxxxx"
-                          value={seller.seller_phone}
-                          onChange={handleChange}
-                          style={{ border: "1px solid black", padding: 10 }}
-                        />
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-4">
-                        <h6>Store description</h6>
-                      </div>
-                      <div className="col-md-8 profileIn">
-                        <input
-                          type="text"
-                          placeholder="Store description"
-                          value={seller.store_description}
-                          onChange={handleChange}
-                          style={{ border: "1px solid black", padding: 10 }}
-                        />
-                      </div>
-                    </div>
-                    {/* <button type="submit" className="btn btn-primary">
-                        Update
-                      </button> */}
-                    {/* </form> */}
+                    </form>
                   </section>
                 </div>
               </section>
-              <div
-                className="p-4"
-                style={{ display: "flex", justifyContent: "end" }}
-              >
-                <button
-                  style={{
-                    width: 140,
-                    height: 36,
-                    border: 0,
-                    borderRadius: "50px",
-                    backgroundColor: "#db3022",
-                    color: "#efefef",
-                  }}
-                  onClick={isLogout}
-                >
-                  Logout
-                </button>
-              </div>
             </div>
           </div>
           <div

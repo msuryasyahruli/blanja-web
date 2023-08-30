@@ -3,6 +3,7 @@ import MyAccount from "./MyAccount";
 import ShippingAddress from "./shippingAddress";
 import MyOrder from "./MyOrder";
 import axios from "axios";
+import ModalLogout from "../modal/modalLogout";
 
 const CustomerProfile = () => {
   const customerId = localStorage.getItem("customerId");
@@ -162,10 +163,11 @@ const CustomerProfile = () => {
             </button>
           </div>
         </section>
+        <ModalLogout/>
       </div>
       <div
         className="col-lg-9 col-md-8"
-        style={{ backgroundColor: "#f5f5f5", height: "100vh" }}
+        style={{ backgroundColor: "#f5f5f5", height: "100%" }}
       >
         <div className="tab-content" id="v-pills-tabContent">
           <MyAccount />

@@ -9,16 +9,12 @@ const deleteProductAction = (product_id, setShow) => async (dispatch) => {
       },
     });
     const result = products.data;
-    console.log(result);
     swal({
-      title: "Product Success",
+      title: "Success",
       text: "Product Deleted",
       icon: "success",
       buttons: "Ok",
     })
-    // .then(()=>{
-    //   window.location.reload()
-    // });
     setShow(false);
     dispatch({ type: "DELETE_PRODUCT", payload: result });
   } catch (error) {

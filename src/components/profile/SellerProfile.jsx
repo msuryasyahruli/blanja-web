@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import ModalLogout from "../modal/modalLogout";
 
 const SellerProfile = () => {
-  const sellerId = localStorage.getItem('sellerId');
+  const sellerId = localStorage.getItem("sellerId");
   const [seller, setSeller] = useState([]);
   useEffect(() => {
     axios
@@ -13,7 +15,7 @@ const SellerProfile = () => {
       .catch((err) => {
         console.log(err);
       });
-  },[sellerId]);
+  }, [sellerId]);
 
   return (
     <>
@@ -157,6 +159,7 @@ const SellerProfile = () => {
             </button>
           </div>
         </section>
+        <ModalLogout/>
       </div>
     </>
   );

@@ -61,17 +61,16 @@ const ShippingAddress = () => {
                     Kabupaten Banyumas, Jawa Tengah, 53181 [Tokopedia Note: blok
                     c 16] Sokaraja, Kab. Banyumas, 53181
                   </p>
-                  <h6 className="btn" data-toggle="modal" data-target="#myModal">
+                  <h6 className="btn" data-toggle="modal" data-target="#address">
                     Change address
                   </h6>
                   <div
                     className="modal fade"
-                    id="myModal"
+                    id="address"
                     style={{ color: "black" }}
                   >
                     <div className="modal-dialog">
                       <div className="modal-content">
-                        {/* Modal Header */}
                         <div className="modal-header">
                           <h4 className="modal-title">Modal Heading</h4>
                           <button
@@ -82,9 +81,7 @@ const ShippingAddress = () => {
                             ×
                           </button>
                         </div>
-                        {/* Modal body */}
                         <div className="modal-body">Modal body..</div>
-                        {/* Modal footer */}
                         <div className="modal-footer">
                           <button
                             type="button"

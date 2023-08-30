@@ -17,9 +17,8 @@ const createProductAction = (data, photo) => async (dispatch) => {
       },
     });
     const result = products.data.data;
-    console.log(result);
     swal({
-      title: "Product Success",
+      title: "Success",
       text: "Product Created",
       icon: "success",
       buttons: "Ok",
