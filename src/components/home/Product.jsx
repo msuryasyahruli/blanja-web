@@ -3,7 +3,7 @@ import stars from "../../assets/image/Rating 5 stars.png";
 // import axios from "axios";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import getProductAction from "../../config/redux/actions/getProductAction";
+import getProductAction from "../../config/redux/actions/ProcuctsActions/getProductAction";
 
 const ProductHome = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const ProductHome = () => {
     <>
       <div className="row">
         {product.map((product, index) => (
-          <div key={index} className="col-xl-2 col-md-3 col-6">
+          <div key={index} className="col-xl-3 col-md-3 col-6">
             <div
               class="mt-3 mb-3 rounded"
               style={{

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import createProductAction from "../../config/redux/actions/createProductAction";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import createProductAction from "../../config/redux/actions/ProcuctsActions/createProductAction";
+import GetCategoryActions from "../../config/redux/actions/CategoryActions/GetCategoryActions";
 
 const SellingProduct = () => {
   const sellerId = localStorage.getItem("sellerId");
@@ -34,17 +34,10 @@ const SellingProduct = () => {
     dispatch(createProductAction(data, photo));
   };
 
-  const [category, setCategory] = useState([]);
+  const { category } = useSelector((state) => state.category);
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_KEY}/category`)
-      .then((res) => {
-        setCategory(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
+    dispatch(GetCategoryActions());
+  }, []);
 
   return (
     <>
@@ -118,8 +111,8 @@ const SellingProduct = () => {
                     onChange={handleChange}
                   >
                     <option selected>Select category</option>
-                    {category.map((category) => (
-                      <option value={category.category_name}>
+                    {category.map((category, index) => (
+                      <option key={index} value={category.category_name}>
                         {category.category_name}
                       </option>
                     ))}

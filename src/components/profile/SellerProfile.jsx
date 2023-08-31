@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import ModalLogout from "../modal/modalLogout";
 
 const SellerProfile = () => {
@@ -159,7 +158,7 @@ const SellerProfile = () => {
             </button>
           </div>
         </section>
-        <ModalLogout/>
+        <ModalLogout />
       </div>
     </>
   );

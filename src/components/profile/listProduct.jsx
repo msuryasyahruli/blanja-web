@@ -10,7 +10,7 @@ const ListProduct = () => {
   const sellerId = localStorage.getItem("sellerId");
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(5);
+  const [postsPerPage] = useState(4);
 
   const [products, setProducts] = useState([]);
   useEffect(() => {
@@ -78,7 +78,12 @@ const ListProduct = () => {
                     src={product.product_photo}
                     alt="Product"
                     crossOrigin="anonymous"
-                    style={{ width: 100 }}
+                    style={{
+                      width: "100%",
+                      height: 150,
+                      borderRadius: 10,
+                      objectFit: "cover",
+                    }}
                   />
                 </div>
               </div>
@@ -86,15 +91,15 @@ const ListProduct = () => {
                 className="col-lg-3 col-6"
                 style={{ lineHeight: "20%", padding: 5 }}
               >
-                <h6>{product.product_name}</h6>
+                <h5>{product.product_name}</h5>
                 <h6>
                   {new Intl.NumberFormat("Rp", {
                     style: "currency",
                     currency: "idr",
                   }).format(product.product_price)}{" "}
                 </h6>
-                <h6>Stock : {product.product_stock}</h6>
-                <h6>Category : {product.category_id}</h6>
+                <p>Stock : {product.product_stock}</p>
+                <p>Category : {product.category_id}</p>
               </div>
               <div className="col-lg-6">
                 <p>{product.product_description}</p>

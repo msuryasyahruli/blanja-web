@@ -1,10 +1,9 @@
-// import axios from "axios";
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { useDispatch } from "react-redux";
-import updateProductAction from "../../config/redux/actions/updateProductAction";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import updateProductAction from "../../config/redux/actions/ProcuctsActions/updateProductAction";
+import GetCategoryActions from "../../config/redux/actions/CategoryActions/GetCategoryActions";
 
 function ModalUpdate({
   product_id,
@@ -46,17 +45,10 @@ function ModalUpdate({
     dispatch(updateProductAction(data, product_id, photo, setShow));
   };
 
-  const [category, setCategory] = useState([]);
+  const { category } = useSelector((state) => state.category);
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_KEY}/category`)
-      .then((res) => {
-        setCategory(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
+    dispatch(GetCategoryActions());
+  }, []);
 
   return (
     <>
@@ -101,8 +93,8 @@ function ModalUpdate({
                 onChange={handleChange}
               >
                 <option selected>Select category</option>
-                {category.map((category) => (
-                  <option value={category.category_name}>
+                {category.map((category, index) => (
+                  <option key={index} value={category.category_name}>
                     {category.category_name}
                   </option>
                 ))}

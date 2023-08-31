@@ -3,17 +3,17 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch } from "react-redux";
-import deleteProductAction from "../../config/redux/actions/deleteProductAction";
+import deleteProductAction from "../../config/redux/actions/ProcuctsActions/deleteProductAction";
 
-function ModalDelete({product_id,children}) {
-  const dispatch = useDispatch()
+function ModalDelete({ product_id, children }) {
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(deleteProductAction(product_id, setShow))
+    dispatch(deleteProductAction(product_id, setShow));
   };
 
   return (
@@ -27,7 +27,9 @@ function ModalDelete({product_id,children}) {
         </Modal.Header>
         <form onSubmit={handleSubmit}>
           <Modal.Body>
-            <h4 className="text-center">Are you sure wannna delete this product?</h4>
+            <h4 className="text-center">
+              Are you sure wannna delete this product?
+            </h4>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
