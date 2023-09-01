@@ -36,7 +36,7 @@ const ModalUpdateAddress = () => {
       <div className="modal fade" id="updateAddress" style={{ color: "black" }}>
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header">
+            <div className="modal-header d-flex justify-content-center">
               <h4 className="modal-title">Change address</h4>
             </div>
             <div className="modal-body">
@@ -74,13 +74,13 @@ const ModalUpdateAddress = () => {
               ))}
             </div>
             <div className="modal-footer">
-              <button
+              {/* <button
                 type="button"
                 className="btn-danger"
                 data-dismiss="modal"
               >
                 Close
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

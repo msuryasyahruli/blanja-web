@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const ModalCreateAddress = () => {
   const customerId = localStorage.getItem("customerId");
@@ -25,7 +26,7 @@ const ModalCreateAddress = () => {
       .post(`${process.env.REACT_APP_API_KEY}/address`, data)
       .then((res) => {
         setData(res.data.data);
-        alert("Address added");
+        Swal.fire("Success", "Login succAddress addedess", "success");
         window.location.reload();
       })
       .catch((err) => {

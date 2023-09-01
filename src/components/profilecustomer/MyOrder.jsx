@@ -1,6 +1,20 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const MyOrder = () => {
+  const customerId = localStorage.getItem("customerId");
+  const [orders, setOrders] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_KEY}/orders/${customerId}`)
+      .then((res) => {
+        setOrders(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [customerId]);
+
   return (
     <>
       <div
@@ -59,7 +73,65 @@ const MyOrder = () => {
                 </ul>
                 <div className="tab-content">
                   <div className="tab-pane container active" id="home">
-                    All items
+                    {orders.map((orders, index) => (
+                      <section className="row" id="select_product" key={index}>
+                        <div className="col-md-7">
+                          <div className="row">
+                            <div
+                              className="col-md-2 col-2"
+                              style={{
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                              }}
+                            >
+                              <input type="checkbox" />
+                            </div>
+                            <div
+                              className="col-md-10 col-10"
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                padding: 5,
+                              }}
+                            >
+                              <img
+                                src={orders.product_photo}
+                                alt="img"
+                                style={{
+                                  width: 80,
+                                  height: 80,
+                                  objectFit: "cover",
+                                  borderRadius: 10,
+                                }}
+                              />
+                              <label
+                                style={{ lineHeight: "normal", padding: 10 }}
+                              >
+                                <h6>{orders.product_name}</h6>
+                                <p style={{ fontSize: 12, color: "#9b9b9b" }}>
+                                  Zalora Cloth
+                                </p>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-md-5">
+                          <div className="row">
+                            <div
+                              style={{ textAlign: "center", paddingTop: 10 }}
+                            >
+                              <p style={{ fontWeight: 700, fontSize: 16 }}>
+                                {new Intl.NumberFormat("Rp", {
+                                  style: "currency",
+                                  currency: "idr",
+                                }).format(orders.product_price)}{" "}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    ))}
                   </div>
                   <div className="tab-pane container fade" id="menu1">
                     Not yet paid
