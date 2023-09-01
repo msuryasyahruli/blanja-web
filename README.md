@@ -7,7 +7,7 @@
   <p align="center">
     <a href="https://github.com/msuryasyahruli/blanja-web"><strong>Explore the docs »</strong></a>
     <br />
-    <a href="">View Demo</a>
+    <a href="https://blanja-market-web.vercel.app/">View Demo</a>
     ·
     <a href="https://tasty-gray-horse.cyclic.app/">Api Demo</a>
   </p>
@@ -164,6 +164,6 @@ Contributions are what make the open source community such an amazing place to b
 
 :rocket: [`Frontend Blanja`](https://github.com/msuryasyahruli/blanja-web)
 
-:rocket: [`Demo Blanja`]()
+:rocket: [`Demo Blanja`](https://blanja-market-web.vercel.app/)
 
 Project Link: [https://github.com/msuryasyahruli/blanja-web](https://github.com/msuryasyahruli/blanja-web)
