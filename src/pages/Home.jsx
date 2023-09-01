@@ -4,9 +4,11 @@ import ProductHome from "../components/home/Product";
 import PromotionIndicators from "../components/home/PromotionIndicators";
 import CategoryIndicators from "../components/home/CategoryIndicators";
 import HeaderBeforeLog from "../components/navbar/headerBeforeLog";
+import HeaderSeller from "../components/navbar/headerSeller";
 
 const Home = () => {
-  const isLogin = localStorage.getItem('token');
+  const isLogin = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
 
   if (!isLogin) {
     return (
@@ -29,7 +31,7 @@ const Home = () => {
               <h1>Popular</h1>
               <p>Find clothes that are trending recently</p>
             </div>
-            <ProductHome/>
+            <ProductHome />
           </div>
         </main>
       </>
@@ -37,7 +39,7 @@ const Home = () => {
   } else {
     return (
       <>
-        <HeaderAfterLog />
+        {role === "customer" ? <HeaderAfterLog /> : <HeaderSeller />}
         <main>
           <div className="container">
             <PromotionIndicators />
@@ -55,7 +57,7 @@ const Home = () => {
               <h1>Popular</h1>
               <p>Find clothes that are trending recently</p>
             </div>
-            <ProductHome/>
+            <ProductHome />
           </div>
         </main>
       </>

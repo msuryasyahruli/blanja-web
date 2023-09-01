@@ -5,9 +5,11 @@ import Description from "../components/detail/Description";
 import Review from "../components/detail/Review";
 import RecomendProduct from "../components/detail/RecomendProduct";
 import HeaderBeforeLog from "../components/navbar/headerBeforeLog";
+import HeaderSeller from "../components/navbar/headerSeller";
 
 const Detail = () => {
   const isLogin = localStorage.getItem('token');
+  const role = localStorage.getItem("role");
 
   if (!isLogin) {
     return (
@@ -41,7 +43,7 @@ const Detail = () => {
   }else{
     return (
       <>
-        <HeaderAfterLog />
+        {role === "customer" ? <HeaderAfterLog /> : <HeaderSeller />}{" "}
         <main>
           <div className="container">
             <DetailProduct/>

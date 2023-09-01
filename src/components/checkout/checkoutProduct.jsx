@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CheckoutPayment from "./checkoutPayment";
 import axios from "axios";
+import ModalUpdateAddress from "../address/modalUpdateAddress";
 
 const CheckoutProduct = () => {
   const customerId = localStorage.getItem("customerId");
@@ -10,6 +11,34 @@ const CheckoutProduct = () => {
       .get(`${process.env.REACT_APP_API_KEY}/orders/${customerId}`)
       .then((res) => {
         setData(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [customerId]);
+
+  const [address, setAddress] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_KEY}/address/${customerId}`)
+      .then((res) => {
+        if (res.data.data[0]) {
+          setAddress(res.data.data[0]);
+        } else {
+          setAddress(res.data.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [customerId]);
+
+  const [customer, setCustomer] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_KEY}/customer/detail/${customerId}`)
+      .then((res) => {
+        setCustomer(res.data.data[0]);
       })
       .catch((err) => {
         console.log(err);
@@ -34,18 +63,18 @@ const CheckoutProduct = () => {
       <div className="row">
         <div className="col-lg-8">
           <section className="address">
-            <h5>Andreas Jane</h5>
+            <h5>{customer.customer_fullname}</h5>
             <p style={{ fontWeight: 400, marginBottom: 20 }}>
-              Perumahan Sapphire Mediterania, Wiradadi, Kec. Sokaraja, Kabupaten
-              Banyumas, Jawa Tengah, 53181 [Tokopedia Note: blok c 16] Sokaraja,
-              Kab. Banyumas, 53181
+              {address.address_name}, {address.posttal_code}, {address.city},{" "}
+              {address.posttal_code}
             </p>
             <div>
-              <button>Choose another address</button>
+              {/* <button>Choose another address</button> */}
+              <ModalUpdateAddress />
             </div>
           </section>
-          {data.map((data) => (
-            <section className="row" id="select_product">
+          {data.map((data, index) => (
+            <section key={index} className="row" id="select_product">
               <div className="col-sm-9 col-8" style={{ padding: "3%" }}>
                 <div>
                   <img
@@ -75,9 +104,9 @@ const CheckoutProduct = () => {
                   }}
                 >
                   {new Intl.NumberFormat("Rp", {
-                      style: "currency",
-                      currency: "idr",
-                    }).format(data.product_price)}{" "}
+                    style: "currency",
+                    currency: "idr",
+                  }).format(data.product_price)}{" "}
                 </p>
               </div>
             </section>

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import ModalLogout from "../modal/modalLogout";
+import ModalLogout from "../modalProfile/modalLogout";
 
 const SellerProfile = () => {
   const sellerId = localStorage.getItem("sellerId");
@@ -36,7 +36,12 @@ const SellerProfile = () => {
           <img
             src={require("../../assets/image/profile.png")}
             alt="profile"
-            style={{ height: 60 }}
+            style={{
+              height: 60,
+              width: 60,
+              objectFit: "cover",
+              borderRadius: 50,
+            }}
           />
           <div className="m-2 text-center" style={{ height: 50 }}>
             <h6 className="p-0">{seller.seller_fullname}</h6>

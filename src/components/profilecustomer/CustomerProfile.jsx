@@ -3,7 +3,7 @@ import MyAccount from "./MyAccount";
 import ShippingAddress from "./shippingAddress";
 import MyOrder from "./MyOrder";
 import axios from "axios";
-import ModalLogout from "../modal/modalLogout";
+import ModalLogout from "../modalProfile/modalLogout";
 
 const CustomerProfile = () => {
   const customerId = localStorage.getItem("customerId");
@@ -39,7 +39,7 @@ const CustomerProfile = () => {
           <img
             src={require("../../assets/image/profile.png")}
             alt="profile"
-            style={{ height: 60 }}
+            style={{ height: 60, width: 60, objectFit: "cover", borderRadius:50 }}
           />
           <div className="m-2 text-center" style={{ height: 50 }}>
             <h6 className="p-0">{customer.customer_fullname}</h6>

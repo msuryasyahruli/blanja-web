@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ListProduct from "./listProduct";
 import SellingProduct from "./SellingProduct";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const MyProfile = () => {
   const sellerId = localStorage.getItem("sellerId");
@@ -25,7 +26,7 @@ const MyProfile = () => {
       .put(`${process.env.REACT_APP_API_KEY}/seller/${sellerId}`, seller)
       .then((res) => {
         setSeller(res);
-        alert("Profile updated");
+        Swal.fire("Success", "Profile updated", "success");
       })
       .catch((err) => {
         console.log(err);
@@ -78,9 +79,7 @@ const MyProfile = () => {
                   <hr />
                 </div>
                 <div className="row">
-                  <section
-                    className="m-3 col-xl-3 row d-flex justify-content-center pt-3"
-                  >
+                  <section className="m-3 col-xl-3 row d-flex justify-content-center pt-3">
                     <div>
                       <div
                         style={{

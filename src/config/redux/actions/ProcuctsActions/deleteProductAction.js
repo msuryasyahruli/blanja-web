@@ -1,5 +1,5 @@
 import axios from "axios";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 const deleteProductAction = (product_id, setShow) => async (dispatch) => {
   try {
@@ -9,12 +9,7 @@ const deleteProductAction = (product_id, setShow) => async (dispatch) => {
       },
     });
     const result = products.data;
-    swal({
-      title: "Success",
-      text: "Product Deleted",
-      icon: "success",
-      buttons: "Ok",
-    })
+    Swal.fire("Success", "Product Deleted", "success")
     setShow(false);
     dispatch({ type: "DELETE_PRODUCT", payload: result });
   } catch (error) {

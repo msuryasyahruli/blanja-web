@@ -1,5 +1,5 @@
 import axios from "axios";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 const createProductAction = (data, photo) => async (dispatch) => {
   try {
@@ -17,12 +17,7 @@ const createProductAction = (data, photo) => async (dispatch) => {
       },
     });
     const result = products.data.data;
-    swal({
-      title: "Success",
-      text: "Product Created",
-      icon: "success",
-      buttons: "Ok",
-    })
+    Swal.fire("Success", "Product Created", "success")
     .then(()=>{
       window.location.reload()
     });

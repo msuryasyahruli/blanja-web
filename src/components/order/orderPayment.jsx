@@ -63,11 +63,9 @@ const OrderPayment = () => {
               </p>
             </div>
             <div>
-              <a href="./checkout.html">
-                <Link to="/checkout">
-                  <button className="button_buy">Buy</button>
-                </Link>
-              </a>
+              <Link to="/checkout">
+                <button className="button_buy">Buy</button>
+              </Link>
             </div>
           </div>
         </section>

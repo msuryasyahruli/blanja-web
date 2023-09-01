@@ -48,6 +48,7 @@ function ModalUpdate({
   const { category } = useSelector((state) => state.category);
   useEffect(() => {
     dispatch(GetCategoryActions());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

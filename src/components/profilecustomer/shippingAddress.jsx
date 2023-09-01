@@ -1,3 +1,6 @@
+import ModalCreateAddress from "../address/ModalCreateAddress";
+import Addresss from "../modalProfile/addresss";
+
 const ShippingAddress = () => {
   return (
     <>
@@ -20,81 +23,8 @@ const ShippingAddress = () => {
               <p>Manage your shipping address</p>
               <hr />
               <div>
-                <div
-                  className="justify-content-center d-flex align-items-center"
-                  style={{
-                    border: "1px solid",
-                    borderRadius: 10,
-                    height: "86px",
-                    color: "#9B9B9B",
-                    margin: "20px",
-                  }}
-                >
-                  Add new address
-                </div>
-                <div
-                  style={{
-                    border: "1px solid",
-                    borderRadius: 10,
-                    padding: "20px",
-                    color: "#DB3022",
-                    margin: "20px",
-                  }}
-                >
-                  <p
-                    style={{
-                      color: "#000",
-                      fontSize: "16px",
-                      fontWeight: "600",
-                    }}
-                  >
-                    Name
-                  </p>
-                  <p
-                    style={{
-                      color: "#000",
-                      fontSize: "14px",
-                      fontWeight: "400",
-                    }}
-                  >
-                    Perumahan Sapphire Mediterania, Wiradadi, Kec. Sokaraja,
-                    Kabupaten Banyumas, Jawa Tengah, 53181 [Tokopedia Note: blok
-                    c 16] Sokaraja, Kab. Banyumas, 53181
-                  </p>
-                  <h6 className="btn" data-toggle="modal" data-target="#address">
-                    Change address
-                  </h6>
-                  <div
-                    className="modal fade"
-                    id="address"
-                    style={{ color: "black" }}
-                  >
-                    <div className="modal-dialog">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h4 className="modal-title">Modal Heading</h4>
-                          <button
-                            type="button"
-                            className="close"
-                            data-dismiss="modal"
-                          >
-                            ×
-                          </button>
-                        </div>
-                        <div className="modal-body">Modal body..</div>
-                        <div className="modal-footer">
-                          <button
-                            type="button"
-                            className="btn btn-danger"
-                            data-dismiss="modal"
-                          >
-                            Close
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <ModalCreateAddress />
+                <Addresss />
               </div>
             </div>
           </section>

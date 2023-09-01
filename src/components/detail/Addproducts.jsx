@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Addproducts = () => {
   const customerId = localStorage.getItem("customerId");
@@ -16,7 +17,7 @@ const Addproducts = () => {
     axios
       .post(`${process.env.REACT_APP_API_KEY}/orders`, data)
       .then((res) => {
-        alert("product added");
+        Swal.fire("Success", "Product Added", "success");
       })
       .catch((err) => {
         console.log(err);

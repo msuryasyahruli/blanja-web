@@ -2,7 +2,7 @@ import React from "react";
 import style from "./headerLog.module.css";
 import { Link } from "react-router-dom";
 
-const HeaderBeforeLog = () => {
+const HeaderSeller = () => {
   return (
     <>
       <header>
@@ -10,7 +10,12 @@ const HeaderBeforeLog = () => {
           <nav className="navbar navbar-expand-lg navbar-light">
             <div>
               <div className={`${style.logo}`}>
-                <img src={require("../../assets/image/Group 1159.png")} alt="logo" />
+                <Link to="/home">
+                  <img
+                    src={require("../../assets/image/Group 1159.png")}
+                    alt="logo"
+                  />
+                </Link>
               </div>
             </div>
             <button
@@ -30,7 +35,10 @@ const HeaderBeforeLog = () => {
             >
               <div className={`${style.search}`}>
                 <input type="text" placeholder="Search" />
-                <img src={require("../../assets/image/Search Glyph.png")} alt="search" />
+                <img
+                  src={require("../../assets/image/Search Glyph.png")}
+                  alt="search"
+                />
               </div>
               <form
                 className="form-inline my-2 my-lg-0"
@@ -41,14 +49,31 @@ const HeaderBeforeLog = () => {
                 }}
               >
                 <div className={`${style.filter}`}>
-                  <img src={require("../../assets/image/filter 1.png")} alt="filter" />
+                  <img
+                    src={require("../../assets/image/filter 1.png")}
+                    alt="filter"
+                  />
                 </div>
                 <div style={{ display: "flex" }}>
-                  <div className={`${style.login}`}>
-                    <Link to='/login'>Login</Link>
+                  <div className={`${style.cart}`}>
+                    <img
+                      src={require("../../assets/image/bell (1) 1.png")}
+                      alt="cart"
+                    />
                   </div>
-                  <div className={`${style.signup}`}>
-                    <Link to="/register">Register</Link>
+                  <div className={`${style.cart}`}>
+                    <img
+                      src={require("../../assets/image/mail (3) 1.png")}
+                      alt="cart"
+                    />
+                  </div>
+                  <div className={`${style.cart}`}>
+                    <Link to="/profile">
+                      <img
+                        src={require("../../assets/image/Mask Group (2).png")}
+                        alt="cart"
+                      />
+                    </Link>
                   </div>
                 </div>
               </form>
@@ -60,4 +85,4 @@ const HeaderBeforeLog = () => {
   );
 };
 
-export default HeaderBeforeLog;
+export default HeaderSeller;

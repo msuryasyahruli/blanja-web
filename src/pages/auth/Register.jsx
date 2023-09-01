@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import style from "./style/register.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Register = () => {
   // seller
@@ -29,6 +30,7 @@ const Register = () => {
       .post(`${process.env.REACT_APP_API_KEY}/seller/register`, sellerdata)
       .then((res) => {
         alert("Register success");
+        Swal.fire("Success", "Register success", "success");
         navigate("/login");
       })
       .catch((err) => {
@@ -55,7 +57,7 @@ const Register = () => {
     axios
       .post(`${process.env.REACT_APP_API_KEY}/customer/register`, customerdata)
       .then((res) => {
-        alert("Register success");
+        Swal.fire("Success", "Register success", "success");
         navigate("/login");
       })
       .catch((err) => {
@@ -93,32 +95,6 @@ const Register = () => {
           <div className={`${style.text}`}>
             <p>Register your new account</p>
           </div>
-          {/* <div
-            className="btn-group btn-group-toggle"
-            data-toggle="buttons"
-            style={{ width: "250px", margin: "0 auto" }}
-          >
-            <label className="btn" style={{ width: "50%", backgroundColor: "#db3022" }}>
-              <input
-                type="radio"
-                name="role"
-                id="option1"
-                onChange={change}
-                value={"customer"}
-              />{" "}
-              Costumer
-            </label>
-            <label className="btn" style={{ width: "50%", backgroundColor: "#efefef" }}>
-              <input
-                type="radio"
-                name="role"
-                id="option2"
-                onChange={change}
-                value={"seller"}
-              />{" "}
-              Seller
-            </label>
-          </div> */}
           <ul
             className="nav nav-pills mb-3 justify-content-center"
             role="tablist"

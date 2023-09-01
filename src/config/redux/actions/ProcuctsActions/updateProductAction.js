@@ -1,5 +1,5 @@
 import axios from "axios";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 const updateProductAction = (data, product_id, photo, setShow) => async (dispatch) => {
   try {
@@ -16,12 +16,7 @@ const updateProductAction = (data, product_id, photo, setShow) => async (dispatc
       },
     });
     const result = products.data;
-    swal({
-      title: "Success",
-      text: "Product Updated",
-      icon: "success",
-      buttons: "Ok",
-    })
+    Swal.fire("Success", "Product Updated", "success");
     setShow(false);
     dispatch({ type: "UPDATE_PRODUCT", payload: result })
   } catch (err) {

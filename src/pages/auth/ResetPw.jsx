@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./style/reset.module.css"
+import style from "./style/reset.module.css";
 import { Link } from "react-router-dom";
 
 const ResetPw = () => {
@@ -8,7 +8,10 @@ const ResetPw = () => {
       <div className={`${style.body}`}>
         <section className={`${style.container}`}>
           <div className="title">
-            <img src={require("../../assets/image/Group 1158.png")} alt="logo" />
+            <img
+              src={require("../../assets/image/Group 1158.png")}
+              alt="logo"
+            />
           </div>
           <div className={`${style.text}`}>
             <p>Reset password</p>
@@ -21,9 +24,9 @@ const ResetPw = () => {
             <input type="password" placeholder="Confirmation New Password" />
           </div>
           <div className={`${style.button}`}>
-            <a href="./login.html">
-              <Link to='/login'><button>NEXT</button></Link>
-            </a>
+            <Link to="/login">
+              <button>NEXT</button>
+            </Link>
           </div>
         </section>
       </div>

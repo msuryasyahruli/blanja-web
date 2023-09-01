@@ -10,6 +10,7 @@ const ProductHome = () => {
   const { product } = useSelector((state) => state.product);
   useEffect(() => {
     dispatch(getProductAction());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
@@ -17,7 +18,7 @@ const ProductHome = () => {
         {product.map((product, index) => (
           <div key={index} className="col-xl-3 col-md-3 col-6">
             <div
-              class="mt-3 mb-3 rounded"
+              className="mt-3 mb-3 rounded"
               style={{
                 backgroundColor: "#fbfbfb",
                 boxShadow: "0px 0px 10px #29292920, 0px 0px 25px #fff",
@@ -29,7 +30,7 @@ const ProductHome = () => {
               >
                 <div className="p-1" style={{ height: "170px" }}>
                   <img
-                    class="h-100 rounded"
+                    className="h-100 rounded"
                     src={product.product_photo}
                     alt="Product"
                     crossOrigin="anonymous"

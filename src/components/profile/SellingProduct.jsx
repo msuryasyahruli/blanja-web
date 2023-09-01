@@ -37,6 +37,7 @@ const SellingProduct = () => {
   const { category } = useSelector((state) => state.category);
   useEffect(() => {
     dispatch(GetCategoryActions());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -103,9 +104,9 @@ const SellingProduct = () => {
                 />
                 <br />
                 <h6>Category</h6>
-                <div class="form-group" style={{ marginTop: "16px" }}>
+                <div className="form-group" style={{ marginTop: "16px" }}>
                   <select
-                    class="form-control"
+                    className="form-control"
                     name="category_id"
                     value={data.category_id}
                     onChange={handleChange}

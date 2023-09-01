@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 const OrderProduct = () => {
   const customerId = localStorage.getItem("customerId");
@@ -21,11 +21,7 @@ const OrderProduct = () => {
     axios
       .delete(`${process.env.REACT_APP_API_KEY}/orders/${customerId}`)
       .then((res) => {
-        swal({
-          title: "Success",
-          text: "Product Deleted",
-          icon: "success"
-        });
+        Swal.fire("Success", "Product Deleted", "success");
         window.location.reload();
       })
       .catch((err) => {
@@ -84,8 +80,8 @@ const OrderProduct = () => {
             </form>
           </div>
         </section>
-        {orders.map((orders) => (
-          <section className="row" id="select_product">
+        {orders.map((orders, index) => (
+          <section className="row" id="select_product" key={index}>
             <div className="col-md-7">
               <div className="row">
                 <div

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const MyAccount = () => {
   const customerId = localStorage.getItem("customerId");
@@ -23,7 +24,7 @@ const MyAccount = () => {
       .put(`${process.env.REACT_APP_API_KEY}/customer/${customerId}`, customer)
       .then((res) => {
         setCustomer(res);
-        alert("Profile updated");
+        Swal.fire("Success", "Profile updated", "success");
         window.location.reload();
       })
       .catch((err) => {
@@ -108,7 +109,7 @@ const MyAccount = () => {
               <section className="m-3 col-xl-8">
                 <form onSubmit={handleSubmit}>
                   <div className="row">
-                    <div className="col-md-4">
+                    <div className="col-md-4 d-flex align-items-center justify-content-end">
                       <h6>Name</h6>
                     </div>
                     <div className="col-md-8 profileIn">
@@ -123,7 +124,7 @@ const MyAccount = () => {
                     </div>
                   </div>
                   <div className="row">
-                    <div className="col-md-4">
+                    <div className="col-md-4 d-flex align-items-center justify-content-end">
                       <h6>Email</h6>
                     </div>
                     <div className="col-md-8 profileIn">
@@ -138,7 +139,7 @@ const MyAccount = () => {
                     </div>
                   </div>
                   <div className="row">
-                    <div className="col-md-4">
+                    <div className="col-md-4 d-flex align-items-center justify-content-end">
                       <h6>Phone number</h6>
                     </div>
                     <div className="col-md-8 profileIn">

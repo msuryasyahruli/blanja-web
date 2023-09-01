@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const BuyProduct = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const BuyProduct = () => {
     axios
       .post(`${process.env.REACT_APP_API_KEY}/orders`, data)
       .then((res) => {
-        alert("product added");
+        Swal.fire("Success", "Buy", "success");
         navigate("/checkout");
       })
       .catch((err) => {

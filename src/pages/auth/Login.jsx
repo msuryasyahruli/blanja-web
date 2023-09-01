@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import style from "./style/login.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Login = () => {
   //seller
@@ -17,21 +18,25 @@ const Login = () => {
     });
     // console.log(sellerdata);
   };
-  
-  const navigate = useNavigate()
+
+  const navigate = useNavigate();
 
   const sellersubmit = (e) => {
     axios
       .post(`${process.env.REACT_APP_API_KEY}/seller/login`, sellerdata)
       .then((res) => {
-        localStorage.setItem("token",res.data.data.token);
-        localStorage.setItem("sellerId",res.data.data.seller_id);
-        localStorage.setItem("role",res.data.data.role);
-        alert("Login success");
+        localStorage.setItem("token", res.data.data.token);
+        localStorage.setItem("sellerId", res.data.data.seller_id);
+        localStorage.setItem("role", res.data.data.role);
+        Swal.fire("Success", "Login success", "success");
         navigate("/home");
       })
       .catch((err) => {
-        alert("Account doesn't exist")
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Account doesnt exist!",
+        });
         console.log(err);
       });
   };
@@ -54,14 +59,18 @@ const Login = () => {
     axios
       .post(`${process.env.REACT_APP_API_KEY}/customer/login`, customerdata)
       .then((res) => {
-        localStorage.setItem("token",res.data.data.token);
-        localStorage.setItem("customerId",res.data.data.customer_id);
-        localStorage.setItem("role",res.data.data.role);
-        alert("Login success");
+        localStorage.setItem("token", res.data.data.token);
+        localStorage.setItem("customerId", res.data.data.customer_id);
+        localStorage.setItem("role", res.data.data.role);
+        Swal.fire("Success", "Login success", "success");
         navigate("/home");
       })
       .catch((err) => {
-        alert("Account doesn't exist")
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Account doesnt exist!",
+        });
         console.log(err);
       });
   };
@@ -87,7 +96,10 @@ const Login = () => {
       <div className={`${style.body}`}>
         <section className={`${style.container}`}>
           <div className={`${style.title}`}>
-            <img src={require("../../assets/image/Group 1158.png")} alt="logo"/>
+            <img
+              src={require("../../assets/image/Group 1158.png")}
+              alt="logo"
+            />
           </div>
           <div className={`${style.text}`}>
             <p>Please login with your account</p>
@@ -139,7 +151,7 @@ const Login = () => {
                 <Link to="/forgot">Forgot password?</Link>
               </div>
               <div className={`${style.button}`}>
-                  <button onClick={customersubmit}>LOGIN</button>
+                <button onClick={customersubmit}>LOGIN</button>
               </div>
               <div className={`${style.toRegist}`}>
                 <p>
@@ -172,7 +184,7 @@ const Login = () => {
                 <Link to="/forgot">Forgot password?</Link>
               </div>
               <div className={`${style.button}`}>
-                  <button onClick={sellersubmit}>LOGIN</button>
+                <button onClick={sellersubmit}>LOGIN</button>
               </div>
               <div className={`${style.toRegist}`}>
                 <p>

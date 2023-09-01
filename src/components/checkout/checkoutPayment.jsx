@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const CheckoutPayment = () => {
   const customerId = localStorage.getItem("customerId");
@@ -227,7 +228,7 @@ const CheckoutPayment = () => {
                         </span>
                       </p>
                     </div>
-                    <a href="./checkout.html">
+                    <Link to="/checkout.html">
                       <button
                         style={{
                           width: 160,
@@ -237,10 +238,11 @@ const CheckoutPayment = () => {
                           color: "#fff",
                           borderRadius: 20,
                         }}
+                        data-dismiss="modal"
                       >
                         Buy
                       </button>
-                    </a>
+                    </Link>
                   </div>
                 </section>
               </div>

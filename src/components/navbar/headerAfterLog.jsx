@@ -8,13 +8,13 @@ const HeaderAfterLog = () => {
       <header>
         <div className="container" style={{ padding: 0 }}>
           <nav className="navbar navbar-expand-lg navbar-light">
-            <a className="search-logo">
+            <div>
               <div className={`${style.logo}`}>
                 <Link to="/home">
-                  <img src={require("../../assets/image/Group 1159.png")} />
+                  <img src={require("../../assets/image/Group 1159.png")} alt="logo" />
                 </Link>
               </div>
-            </a>
+            </div>
             <button
               className="navbar-toggler"
               type="button"
@@ -32,7 +32,7 @@ const HeaderAfterLog = () => {
             >
               <div className={`${style.search}`}>
                 <input type="text" placeholder="Search" />
-                <img src={require("../../assets/image/Search Glyph.png")} />
+                <img src={require("../../assets/image/Search Glyph.png")} alt="search" />
               </div>
               <form
                 className="form-inline my-2 my-lg-0"
@@ -43,26 +43,26 @@ const HeaderAfterLog = () => {
                 }}
               >
                 <div className={`${style.filter}`}>
-                  <img src={require("../../assets/image/filter 1.png")} />
+                  <img src={require("../../assets/image/filter 1.png")} alt="filter" />
                 </div>
                 <div style={{ display: "flex" }}>
                   <div className={`${style.cart}`}>
                     <Link to="/order">
                       <img
-                        src={require("../../assets/image/shopping-cart (2) 1.png")}
+                        src={require("../../assets/image/shopping-cart (2) 1.png")} alt="order"
                       />
                     </Link>
                   </div>
                   <div className={`${style.cart}`}>
-                    <img src={require("../../assets/image/bell (1) 1.png")} />
+                    <img src={require("../../assets/image/bell (1) 1.png")} alt="cart" />
                   </div>
                   <div className={`${style.cart}`}>
-                    <img src={require("../../assets/image/mail (3) 1.png")} />
+                    <img src={require("../../assets/image/mail (3) 1.png")} alt="cart" />
                   </div>
                   <div className={`${style.cart}`}>
                     <Link to="/profile">
                       <img
-                        src={require("../../assets/image/Mask Group (2).png")}
+                        src={require("../../assets/image/Mask Group (2).png")} alt="cart"
                       />
                     </Link>
                   </div>
