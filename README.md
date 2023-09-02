@@ -7,9 +7,9 @@
   <p align="center">
     <a href="https://github.com/msuryasyahruli/blanja-web"><strong>Explore the docs »</strong></a>
     <br />
-    <a href="https://backend-blanja-v1.vercel.app/products">View Demo</a>
+    <a href="https://blanja-market-web.vercel.app">View Demo</a>
     ·
-    <a href="https://tasty-gray-horse.cyclic.app/">Api Demo</a>
+    <a href="https://backend-blanja-v1.vercel.app/products/">Api Demo</a>
   </p>
 </p>
 
