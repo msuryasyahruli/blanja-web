@@ -29,6 +29,22 @@ const OrderProduct = () => {
       });
   };
 
+  let totalProduct = orders.length;
+
+  const [quantity, setQuantity] = useState(1);
+
+  const handleIncrease = () => {
+    if (quantity < 10) {
+      setQuantity(quantity + 1);
+    }
+  };
+
+  const handleDecrease = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
   return (
     <>
       <style>
@@ -60,7 +76,10 @@ const OrderProduct = () => {
           <div className="col-md-9 col-6">
             <label style={{ textAlign: "center", margin: "15px 0" }}>
               Select all items
-              <span style={{ color: "#9b9b9b" }}> (3 items selected)</span>
+              <span style={{ color: "#9b9b9b" }}>
+                {" "}
+                ({totalProduct} items selected)
+              </span>
             </label>
           </div>
           <div className="col-md-2 col-4">
@@ -127,27 +146,29 @@ const OrderProduct = () => {
                     alignItems: "center",
                   }}
                 >
-                  <div
+                  <button
                     className="amount"
-                    style={{ backgroundColor: "#d4d4d4" }}
+                    style={{ backgroundColor: "#d4d4d4", border: 0 }}
+                    onClick={handleDecrease}
                   >
                     <img
                       src={require("../../assets/image/min.png")}
                       alt="min"
                     />
-                  </div>
+                  </button>
                   <div className="amount">
-                    <h6>1</h6>
+                    <h6>{quantity}</h6>
                   </div>
-                  <div
+                  <button
                     className="amount"
-                    style={{ boxShadow: "0px 0px 10px #29292940" }}
+                    style={{ boxShadow: "0px 0px 10px #29292940", border: 0 }}
+                    onClick={handleIncrease}
                   >
                     <img
                       src={require("../../assets/image/plus.png")}
                       alt="plus"
                     />
-                  </div>
+                  </button>
                 </div>
                 <div
                   className="col-md-6 col-4"
@@ -157,7 +178,7 @@ const OrderProduct = () => {
                     {new Intl.NumberFormat("Rp", {
                       style: "currency",
                       currency: "idr",
-                    }).format(orders.product_price)}{" "}
+                    }).format(orders.product_price * quantity)}{" "}
                   </p>
                 </div>
               </div>

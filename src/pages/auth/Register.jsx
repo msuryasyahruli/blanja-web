@@ -29,7 +29,6 @@ const Register = () => {
     axios
       .post(`${process.env.REACT_APP_API_KEY}/seller/register`, sellerdata)
       .then((res) => {
-        alert("Register success");
         Swal.fire("Success", "Register success", "success");
         navigate("/login");
       })

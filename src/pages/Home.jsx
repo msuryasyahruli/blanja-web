@@ -5,6 +5,7 @@ import PromotionIndicators from "../components/home/PromotionIndicators";
 import CategoryIndicators from "../components/home/CategoryIndicators";
 import HeaderBeforeLog from "../components/navbar/headerBeforeLog";
 import HeaderSeller from "../components/navbar/headerSeller";
+import ProductPage from "../components/home/ProductPage";
 
 const Home = () => {
   const isLogin = localStorage.getItem("token");
@@ -26,7 +27,7 @@ const Home = () => {
               <h1>New</h1>
               <p>You’ve never seen it before!</p>
             </div>
-            <ProductHome />
+            <ProductPage />
             <div className="product">
               <h1>Popular</h1>
               <p>Find clothes that are trending recently</p>
@@ -52,7 +53,7 @@ const Home = () => {
               <h1>New</h1>
               <p>You’ve never seen it before!</p>
             </div>
-            <ProductHome />
+            <ProductPage />
             <div className="product">
               <h1>Popular</h1>
               <p>Find clothes that are trending recently</p>

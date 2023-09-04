@@ -86,9 +86,9 @@ function ModalUpdate({
               value={data.product_stock}
               onChange={handleChange}
             />
-            <div class="form-group" style={{ marginTop: "16px" }}>
+            <div className="form-group" style={{ marginTop: "16px" }}>
               <select
-                class="form-control"
+                className="form-control"
                 name="category_id"
                 value={data.category_id}
                 onChange={handleChange}

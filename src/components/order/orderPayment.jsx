@@ -16,7 +16,7 @@ const OrderPayment = () => {
       });
   }, [customerId]);
 
-  let total = orders.reduce((val, element) => {
+  let totalPrice = orders.reduce((val, element) => {
     return val + element.product_price;
   }, 0);
 
@@ -59,7 +59,7 @@ const OrderPayment = () => {
                 {new Intl.NumberFormat("Rp", {
                   style: "currency",
                   currency: "idr",
-                }).format(total)}{" "}
+                }).format(totalPrice)}{" "}
               </p>
             </div>
             <div>

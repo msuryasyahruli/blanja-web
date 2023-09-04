@@ -2,15 +2,17 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import LogModal from "./LogModal";
 
 const Addproducts = () => {
   const customerId = localStorage.getItem("customerId");
+  const login = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
   const { id } = useParams();
   const [data] = useState({
     product_id: id,
     customer_id: customerId,
   });
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,11 +27,55 @@ const Addproducts = () => {
       });
   };
 
-  return (
-    <>
-      <form onSubmit={handleSubmit}>
+  if (login) {
+    if (role === "customer") {
+      return (
+        <>
+          <form onSubmit={handleSubmit}>
+            <button
+              type="submit"
+              className="btn btn-primary d-flex justify-content-center align-items-center w-100"
+              style={{
+                height: 48,
+                fontSize: 14,
+                fontWeight: 500,
+                borderRadius: 50,
+                border: 0,
+                backgroundColor: "#efefef",
+                color: "black",
+              }}
+            >
+              Add bag
+            </button>
+          </form>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <button
+            className="btn btn-primary d-flex justify-content-center align-items-center w-100"
+            style={{
+              height: 48,
+              fontSize: 14,
+              fontWeight: 500,
+              borderRadius: 50,
+              border: 0,
+              backgroundColor: "#efefef",
+              color: "black",
+            }}
+          >
+            Add bag
+          </button>
+        </>
+      );
+    }
+  } else {
+    return (
+      <>
         <button
-          type="submit"
+          data-toggle="modal"
+          data-target="#tologin"
           className="btn btn-primary d-flex justify-content-center align-items-center w-100"
           style={{
             height: 48,
@@ -38,14 +84,15 @@ const Addproducts = () => {
             borderRadius: 50,
             border: 0,
             backgroundColor: "#efefef",
-            color: "black"
+            color: "black",
           }}
         >
           Add bag
         </button>
-      </form>
-    </>
-  );
+        <LogModal />
+      </>
+    );
+  }
 };
 
 export default Addproducts;

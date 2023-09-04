@@ -22,43 +22,35 @@ const PromotionIndicators = () => {
         </ol>
         <div
           className="carousel-inner"
-          style={{ borderRadius: 10, lineHeight: 100 }}
+          style={{ borderRadius: 10, height: "50%" }}
         >
           <div className="carousel-item active">
             <img src={trend2020} className="d-block w-100" alt="img" />
             <div
               className="carousel-caption d-none d-md-block"
               style={{ fontSize: 100, fontWeight: 300 }}
-            >
-              <p>Trend In 2020</p>
-            </div>
+            ></div>
           </div>
           <div className="carousel-item">
             <img src={blackedition} className="d-block w-100" alt="img" />
             <div
               className="carousel-caption d-none d-md-block"
               style={{ fontSize: 100, fontWeight: 300 }}
-            >
-              <p>Black Edition</p>
-            </div>
+            ></div>
           </div>
           <div className="carousel-item">
             <img src={trend2020} className="d-block w-100" alt="img" />
             <div
               className="carousel-caption d-none d-md-block"
               style={{ fontSize: 100, fontWeight: 300 }}
-            >
-              <p>Trend In 2020</p>
-            </div>
+            ></div>
           </div>
           <div className="carousel-item">
             <img src={blackedition} className="d-block w-100" alt="img" />
             <div
               className="carousel-caption d-none d-md-block"
               style={{ fontSize: 100, fontWeight: 300 }}
-            >
-              <p>Black Edition</p>
-            </div>
+            ></div>
           </div>
         </div>
         <button

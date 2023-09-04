@@ -15,7 +15,6 @@ const MyAccount = () => {
       ...customer,
       [e.target.name]: e.target.value,
     });
-    console.log(customer);
   };
 
   const handleSubmit = async (e) => {
@@ -25,7 +24,6 @@ const MyAccount = () => {
       .then((res) => {
         setCustomer(res);
         Swal.fire("Success", "Profile updated", "success");
-        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
