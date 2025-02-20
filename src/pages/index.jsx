@@ -7,8 +7,8 @@ import { useCategories } from "../config/redux/hooks/categoryHook";
 import { useProducts } from "../config/redux/hooks/productHook";
 
 // assets
-import Trend2025Banner from "../assets/image/trend.png";
-import BlackEditionBanner from "../assets/image/promotion.png";
+import Trend2025Banner from "../assets/image/trend 2020.png";
+import BlackEditionBanner from "../assets/image/black edition.png";
 import CategoryBanner from "../assets/image/Mask Group (3).png";
 import StarsIcon from "../assets/image/Rating 5 stars.png";
 
