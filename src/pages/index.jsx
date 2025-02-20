@@ -33,7 +33,7 @@ const Home = () => {
   };
 
   const { data: categories } = useCategories();
-  const { data: products, isLoading } = useProducts(params);
+  const { data: products } = useProducts(params);
 
   return (
     <>

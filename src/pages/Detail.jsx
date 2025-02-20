@@ -4,13 +4,13 @@ import Ratings from "../components/detail/Ratings";
 import Headers from "../components/navbar/Headers";
 import { useUser } from "../config/redux/hooks/userHook";
 import { useDetailProduct } from "../config/redux/hooks/productHook";
+import { postCart } from "../config/redux/actions/cartAction";
+import { getToken } from "../config/storage";
 
 // assets
 import PlusIcon from "../assets/image/plus.png";
 import MinIcon from "../assets/image/min.png";
 import StarIcon from "../assets/image/Rating 5 stars.png";
-import { postCart } from "../config/redux/actions/cartAction";
-import { getToken } from "../config/storage";
 
 const Detail = () => {
   const token = getToken();
@@ -26,7 +26,7 @@ const Detail = () => {
     quantity: 1,
     picked_variant: ""
   });
-console.log(payload)
+
   const handleAddBag = async () => {
     setLoading(true);
     await postCart(payload).finally(() => setLoading(false));
