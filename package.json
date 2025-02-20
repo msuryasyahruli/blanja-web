@@ -1,5 +1,5 @@
 {
-  "name": "latihan",
+  "name": "blanja",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,18 +11,18 @@
     "axios": "^1.4.0",
     "bootstrap": "4.6",
     "cra-template": "1.2.0",
-    "primereact": "^9.6.0",
     "react": "^18.2.0",
     "react-bootstrap": "2.8",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.54.2",
     "react-redux": "^8.1.1",
     "react-router-dom": "6.3",
     "react-scripts": "5.0.1",
     "redux": "4.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.2",
-    "sweetalert": "^2.1.2",
     "sweetalert2": "^11.7.27",
+    "swiper": "^11.2.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
