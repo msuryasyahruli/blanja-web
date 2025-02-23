@@ -76,7 +76,7 @@ export const fetchSellerProduct = (id) => async (dispatch) => {
   }
 };
 
-export const fetchPostProduct = async (payload) => {
+export const postProduct = async (payload) => {
   const url = BASE_URL + `/products`;
   try {
     const { data } = await fetch.post(url, payload, { isFormData: true });

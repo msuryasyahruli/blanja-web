@@ -1,71 +1,65 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import getMenuBar from "./MenuBar";
+import { useUser } from "../../config/redux/hooks/userHook";
 
 // assets
-import Profile from "../../assets/image/profile.png";
+import ProfileIcon from "../../assets/image/fotoprofile.png";
 
 const SideBar = () => {
   const MenuBar = getMenuBar();
   const navigate = useNavigate();
   const location = useLocation();
-  let queryParams = new URLSearchParams(location.search);
-  const params = queryParams.get("sub");
+
+  const { data: userData } = useUser();
 
   useEffect(() => {
-    if (MenuBar.length > 0 && MenuBar[0].subMenu?.length > 0 && !params) {
-      const currentUrl = new URL(window.location.href);
-      currentUrl.searchParams.set("sub", MenuBar[0].subMenu[0].path);
-      navigate(location.pathname + currentUrl.search, { replace: true });
-    }
+    MenuBar.forEach((menu) => {
+      if (menu.subMenu && location.pathname === menu.path) {
+        navigate(menu.subMenu[0].path, { replace: true });
+      }
+    });
   }, [MenuBar, location.pathname, navigate]);
 
-  const toggleMenu = (params, path) => {
-    if (params) {
-      const currentUrl = new URL(window.location);
-      currentUrl.searchParams.set("sub", params);
-      navigate(path + currentUrl.search);
+  const handleNavigation = (menu) => {
+    if (menu.subMenu) {
+      navigate(menu.subMenu[0].path);
     } else {
-      navigate(path);
+      navigate(menu.path);
     }
-  };
-
-  const toggleSubMenu = (params) => {
-    const currentUrl = new URL(window.location);
-    currentUrl.searchParams.set("sub", params);
-    navigate(location.pathname + currentUrl.search);
   };
 
   return (
     <div className="col-lg-3 col-md-4 d-flex flex-column p-3">
       <section className="d-flex align-items-center my-4">
         <img
-          src={Profile}
+          src={userData.user_photo || ProfileIcon}
           alt="profile"
           style={{
             height: 60,
             width: 60,
             objectFit: "cover",
             borderRadius: 50,
+            aspectRatio: 1/1,
           }}
         />
         <div className="ml-3 w-100">
-          <h6 className="m-0">Username</h6>
+          <h6 className="m-0">{userData.username}</h6>
           <button className="btn p-0 text-muted">Ubah profile</button>
         </div>
       </section>
 
-      {MenuBar?.map((menu) => (
-        <div key={menu.path}>
+      {MenuBar?.map((menu, index) => (
+        <div key={index}>
           <button
             className={`btn d-flex align-items-center w-100 text-left px-0 my-2 ${
-              location.pathname === menu.path
+              location.pathname === menu.path ||
+              (menu.subMenu &&
+                menu.subMenu.some((sub) => location.pathname === sub.path))
                 ? "text-dark font-weight-bold"
                 : "text-black-50"
             }`}
-            onClick={() =>
-              toggleMenu(menu?.subMenu ? menu.subMenu[0].path : null, menu.path)
-            }
+            onClick={() => handleNavigation(menu)}
           >
             <div
               className={`mr-3 rounded-circle d-flex align-items-center justify-content-center ${menu.bgColor}`}
@@ -76,28 +70,32 @@ const SideBar = () => {
             <span>{menu.label}</span>
             {menu.subMenu && (
               <span className="ml-auto">
-                {location.pathname === menu.path ? "▲" : "▼"}
+                {menu.subMenu &&
+                menu.subMenu.some((sub) => location.pathname === sub.path)
+                  ? "▲"
+                  : "▼"}
               </span>
             )}
           </button>
 
-          {location.pathname === menu.path && (
-            <div className="ml-5">
-              {menu?.subMenu?.map((sub, index) => (
-                <button
-                  key={index}
-                  className={`btn w-100 text-left px-0 ${
-                    params === sub.path
-                      ? "text-dark font-weight-normal"
-                      : "text-black-50"
-                  }`}
-                  onClick={() => toggleSubMenu(sub.path)}
-                >
-                  {sub.label}
-                </button>
-              ))}
-            </div>
-          )}
+          {menu.subMenu &&
+            menu.subMenu.some((sub) => location.pathname === sub.path) && (
+              <div className="ml-5">
+                {menu?.subMenu?.map((sub, subIndex) => (
+                  <button
+                    key={subIndex}
+                    className={`btn w-100 text-left px-0 ${
+                      location.pathname === sub.path
+                        ? "text-dark"
+                        : "text-black-50"
+                    }`}
+                    onClick={() => navigate(sub.path)}
+                  >
+                    {sub.label}
+                  </button>
+                ))}
+              </div>
+            )}
         </div>
       ))}
     </div>

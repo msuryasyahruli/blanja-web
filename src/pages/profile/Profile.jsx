@@ -2,14 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { updateUser } from "../../config/redux/actions/userAction";
 import { useUser } from "../../config/redux/hooks/userHook";
+import SmModal from "../../components/modal/SmModal";
+import ProfilePicture from "../../components/profile/ProfilePicture";
 
 // assets
-import ProfilePic from "../../assets/image/fotoprofile110.png";
+import ProfileIcon from "../../assets/image/fotoprofile.png";
 
 const Profile = () => {
   const [loading, setLoading] = useState(false);
+  const [onShowModal, setShowModal] = useState(false);
+  const [refetch, setRefetch] = useState(Date.now());
 
-  const { data: userData, id: userId } = useUser();
+  const { data: userData, id: userId } = useUser(refetch);
 
   const {
     register,
@@ -26,7 +30,7 @@ const Profile = () => {
     }
   }, [userData, setValue]);
 
-  const onSubmit = async (data) => {
+  const handleUpdate = async (data) => {
     setLoading(true);
     const formData = new FormData();
     if (data.username !== userData.username) {
@@ -38,13 +42,11 @@ const Profile = () => {
     if (data.phone_number !== userData.phone_number) {
       formData.append("phone_number", data.phone_number);
     }
-    // if (data.user_photo[0]) {
-    //   formData.append("user_photo", data.user_photo);
-    // }
 
     await updateUser(formData, userId)
       .then(() => {
         setLoading(false);
+        setRefetch(Date.now());
       })
       .catch(() => setLoading(false));
   };
@@ -59,7 +61,7 @@ const Profile = () => {
           <div className="col-lg-4">
             <div className="d-flex flex-column align-items-center my-3">
               <img
-                src={ProfilePic}
+                src={userData.user_photo || ProfileIcon}
                 alt="profile"
                 className="rounded-circle mb-2"
                 style={{
@@ -68,13 +70,16 @@ const Profile = () => {
                   objectFit: "cover",
                 }}
               />
-              <button className="btn border rounded-pill px-4">
+              <button
+                className="btn border rounded-pill px-4"
+                onClick={() => setShowModal(true)}
+              >
                 Select image
               </button>
             </div>
           </div>
           <div className="col-lg-8">
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(handleUpdate)}>
               <div className="mb-3">
                 <label className="form-label text-black-50" htmlFor="username">
                   Name
@@ -142,22 +147,31 @@ const Profile = () => {
                 <>
                   <div className="mb-3">
                     <label className="form-label text-black-50">Gender</label>
-                    <div>
-                      <input
-                        type="radio"
-                        id="male"
-                        name="gender"
-                        className="mr-1"
-                        defaultChecked
-                      />
-                      <label htmlFor="male">Laki-laki</label>
-                      <input
-                        type="radio"
-                        id="female"
-                        name="gender"
-                        className="ml-3 mr-1"
-                      />
-                      <label htmlFor="female">Perempuan</label>
+                    <div className="d-flex">
+                      <div className="form-check mr-3">
+                        <input
+                          type="radio"
+                          id="male"
+                          name="gender"
+                          className="form-check-input"
+                          disabled
+                        />
+                        <label className="form-check-label" htmlFor="male">
+                          Men
+                        </label>
+                      </div>
+                      <div className="form-check">
+                        <input
+                          type="radio"
+                          id="female"
+                          name="gender"
+                          className="form-check-input"
+                          disabled
+                        />
+                        <label className="form-check-label" htmlFor="female">
+                          Women
+                        </label>
+                      </div>
                     </div>
                   </div>
                   <div className="mb-3 ">
@@ -168,6 +182,7 @@ const Profile = () => {
                       <select
                         className="form-select btn border mr-2"
                         defaultValue="1"
+                        disabled
                       >
                         {Array.from({ length: 31 }, (_, i) => (
                           <option key={i + 1} value={i + 1}>
@@ -178,6 +193,7 @@ const Profile = () => {
                       <select
                         className="form-select btn border mr-2"
                         defaultValue="Januari"
+                        disabled
                       >
                         {[
                           "Januari",
@@ -201,6 +217,7 @@ const Profile = () => {
                       <select
                         className="form-select btn border"
                         defaultValue="1990"
+                        disabled
                       >
                         {Array.from({ length: 50 }, (_, i) => (
                           <option key={1990 + i} value={1990 + i}>
@@ -227,6 +244,19 @@ const Profile = () => {
           </div>
         </section>
       </div>
+
+      <SmModal
+        onShow={onShowModal}
+        handleClose={() => setShowModal(false)}
+        title="Change picture"
+      >
+        <ProfilePicture
+          userData={userData}
+          userId={userId}
+          onSetShow={setShowModal}
+          onRefetch={setRefetch}
+        />
+      </SmModal>
     </>
   );
 };

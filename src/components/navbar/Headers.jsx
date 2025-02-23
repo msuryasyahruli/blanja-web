@@ -11,14 +11,14 @@ import FilterIcon from "../../assets/image/filter 1.png";
 import CartIcon from "../../assets/image/shopping-cart (2) 1.png";
 import BellIcon from "../../assets/image/bell (1) 1.png";
 import MailIcon from "../../assets/image/mail (3) 1.png";
-import ProfileIcon from "../../assets/image/Mask Group (2).png";
+import ProfileIcon from "../../assets/image/fotoprofile.png";
 
 const Headers = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const token = localStorage.getItem("token");
 
-  // const { isError } = useUser();
+  const { data: userData } = useUser();
 
   const handleLogout = () => {
     localStorage.clear();
@@ -125,9 +125,10 @@ const Headers = () => {
                         aria-expanded="false"
                       >
                         <img
-                          src={ProfileIcon}
+                          src={userData.user_photo || ProfileIcon}
                           alt="profile"
-                          style={{ width: 32, height: 32 }}
+                          className="rounded-circle"
+                          style={{ width: 32, height: 32, objectFit: "cover" }}
                         />
                       </button>
                       <div className="dropdown-menu dropdown-menu-right">

@@ -36,7 +36,7 @@ const FormProduct = ({ id, handleClose, onRefetchKey }) => {
     }
   }, [product, setValue]);
 
-  const onSubmit = async (data) => {
+  const handleUpdate = async (data) => {
     setLoading(true);
     const formData = new FormData();
     if (data.product_name !== product.product_name) {
@@ -55,7 +55,7 @@ const FormProduct = ({ id, handleClose, onRefetchKey }) => {
       formData.append("product_description", data.product_description);
     }
     if (imageUpload !== null) {
-      formData.append("product_thumbnail", imageUpload);
+      formData.append("product_photo", imageUpload);
     }
 
     await fetchPatchProduct(formData, id)
@@ -72,7 +72,7 @@ const FormProduct = ({ id, handleClose, onRefetchKey }) => {
       <span className="spinner-border"></span>
     </div>
   ) : (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(handleUpdate)}>
       <div className="form-group row">
         <div className="col-md-4">
           <img

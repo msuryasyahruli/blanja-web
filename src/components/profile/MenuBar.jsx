@@ -20,7 +20,7 @@ const getMenuBar = () => {
         subMenu: [
           {
             label: "Store Profile",
-            path: "my-profile",
+            path: "/profile/store-profile",
           },
         ],
       },
@@ -32,11 +32,11 @@ const getMenuBar = () => {
         subMenu: [
           {
             label: "My Products",
-            path: "my-product",
+            path: "/profile/product/my-product",
           },
           {
             label: "Selling Products",
-            path: "selling",
+            path: "/profile/product/selling",
           },
         ],
       },
@@ -46,10 +46,10 @@ const getMenuBar = () => {
         bgColor: "bg-danger",
         path: "/profile/order",
         subMenu: [
-          { label: "My Order", path: "my-order" },
+          { label: "My Order", path: "/profile/order/my-order" },
           {
             label: "Order Cancel",
-            path: "order-cancel",
+            path: "/profile/order/order-cancel",
           },
         ],
       },

@@ -98,3 +98,22 @@ export const updateUser = async (payload, id) => {
     throw error;
   }
 };
+
+export const deleteProfilePicture = async (id) => {
+  const url = BASE_URL + `/users/${id}/picture`;
+  try {
+    const { data } = await fetch.delete(url);
+    if (data.statusCode === 200) {
+      Toast.fire({
+        icon: "success",
+        title: data.message,
+      });
+    }
+  } catch (error) {
+    Toast.fire({
+      icon: "error",
+      title: error.message,
+    });
+    throw error;
+  }
+};

@@ -5,6 +5,7 @@ import Register from "../../pages/auth/Register.jsx";
 import Page404 from "../../pages/Page404.jsx";
 import ForgotPw from "../../pages/auth/ForgotPw.jsx";
 import ResetPw from "../../pages/auth/ResetPw.jsx";
+import LandingPage from "../../pages/index.jsx";
 import Detail from "../../pages/Detail.jsx";
 import Checkout from "../../pages/Checkout.jsx";
 import Cart from "../../pages/Cart.jsx";
@@ -13,7 +14,7 @@ import ProfileLayout from "../../components/profile/Layout.jsx";
 import Product from "../../pages/profile/Product.jsx";
 import Order from "../../pages/profile/Order.jsx";
 import ShippingAddress from "../../pages/profile/ShippingAddress.jsx";
-import LandingPage from "../../pages/index.jsx";
+import SellingProduct from "../../pages/profile/SellingProduct.jsx";
 
 const Router = () => {
   return (
@@ -28,11 +29,12 @@ const Router = () => {
 
           <Route path="/profile" element={<ProfileLayout />}>
             <Route index element={<Profile />} />
-            <Route path="my-profile" element={<Profile />} />
-            <Route path="product" element={<Product />} />
-            <Route path="order" element={<Order />} />
-            <Route path="my-account" element={<Profile />} />
+            <Route path="store-profile" element={<Profile />} />
             <Route path="shipping-address" element={<ShippingAddress />} />
+            <Route path="product/my-product" element={<Product />} />
+            <Route path="product/selling" element={<SellingProduct />} />
+            <Route path="order/my-order" element={<Order />} />
+            <Route path="order/order-cancel" element={<Order />} />
             <Route path="my-order" element={<Order />} />
           </Route>
 
