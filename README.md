@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <div align="center">
-    <img weight="120" src="./src/assets/image/Group 1158.png" alt="blanja" border="0"/>
+    <img weight="150" src="./src/assets/image/Group 1158.png" alt="blanja" border="0"/>
   </div>
   <h3 align="center">Blanja</h3>
   <p align="center">
@@ -90,59 +90,59 @@ REACT_APP_API_KEY = [BACKEND_URL]
 
 <table>
  <tr>
-    <td><img width="350px" src="src/assets/screenshot/register.png"  border="0" border="0" alt="1" /></td>
-    <td> <img width="350px" src="src/assets/screenshot/login.png" \ border="0"  border="0"  border="0"  alt="2" /></td>
+    <td><img width="350px" src="src/assets/screenshot/register.png" border="0" alt="1" /></td>
+    <td> <img width="350px" src="src/assets/screenshot/login.png" border="0" alt="2" /></td>
   </tr>
    <tr>
     <td>Register</td>
     <td>Login</td>
   </tr>
   <tr>
-    <td><img width="350px" src="src/assets/screenshot/home.png"  border="0" border="0" alt="1" /></td>
-    <td> <img width="350px" src="src/assets/screenshot/filter.png" \ border="0"  border="0"  border="0"  alt="2" /></td>
+    <td><img width="350px" src="src/assets/screenshot/home.png" border="0" alt="1" /></td>
+    <td> <img width="350px" src="src/assets/screenshot/filter.png" border="0" alt="2" /></td>
   </tr>
    <tr>
     <td>Home</td>
     <td>Filter</td>
   </tr>
    <tr>
-    <td><img width="350px" src="src/assets/screenshot/detail.png"  border="0" border="0" alt="1" /></td>
-    <td> <img width="350px" src="src/assets/screenshot/order.png" \ border="0"  border="0"  border="0"  alt="2" /></td>
+    <td><img width="350px" src="src/assets/screenshot/detail.png" border="0" alt="1" /></td>
+    <td> <img width="350px" src="src/assets/screenshot/order.png" border="0" alt="2" /></td>
   </tr>
    <tr>
     <td>Detail product</td>
     <td>Order product</td>
   </tr>
    <tr>
-    <td><img width="350px" src="src/assets/screenshot/checkout.png"  border="0" border="0" alt="1" /></td>
-    <td> <img width="350px" src="src/assets/screenshot/payment-menthod.png" \ border="0"  border="0"  border="0"  alt="2" /></td>
+    <td><img width="350px" src="src/assets/screenshot/checkout.png" border="0" alt="1" /></td>
+    <td> <img width="350px" src="src/assets/screenshot/payment-method.png" border="0" alt="2" /></td>
   </tr>
    <tr>
     <td>Checkout product</td>
     <td>Payment method</td>
   </tr>
    <tr>
-    <td><img width="350px" src="src/assets/screenshot/profile.png"  border="0" border="0" alt="1" /></td>
-    <td> <img width="350px" src="src/assets/screenshot/store-profile.png" \ border="0"  border="0"  border="0"  alt="2" /></td>
+    <td><img width="350px" src="src/assets/screenshot/profile.png" border="0" alt="1" /></td>
+    <td> <img width="350px" src="src/assets/screenshot/store-profile.png" border="0" alt="2" /></td>
   </tr>
    <tr>
     <td>Profile</td>
     <td>Store profile</td>
   </tr>
    <tr>
-    <td><img width="350px" src="src/assets/screenshot/shipping-address.png"  border="0" border="0" alt="1" /></td>
-    <td> <img width="350px" src="src/assets/screenshot/order-items.png" \ border="0"  border="0"  border="0"  alt="2" /></td>
+    <td><img width="350px" src="src/assets/screenshot/shipping-address.png" border="0" alt="1" /></td>
+    <td> <img width="350px" src="src/assets/screenshot/store-products.png" border="0" alt="2" /></td>
   </tr>
    <tr>
     <td>Shipping address</td>
-    <td>Orders items</td>
-  </tr>
-   <tr>
-    <td><img width="350px" src="src/assets/screenshot/store-products.png"  border="0" border="0" alt="1" /></td>
-    <td> <img width="350px" src="src/assets/screenshot/selling-product.png" \ border="0"  border="0"  border="0"  alt="2" /></td>
-  </tr>
-   <tr>
     <td>Store products</td>
+  </tr>
+   <tr>
+    <td><img width="350px" src="src/assets/screenshot/order-items.png" border="0" alt="1" /></td>
+    <td> <img width="350px" src="src/assets/screenshot/selling-product.png" border="0" alt="2" /></td>
+  </tr>
+   <tr>
+    <td>Orders items</td>
     <td>Selling product</td>
   </tr>
 </table>
