@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <div align="center">
-    <img height="150" src="./src/assets/image/Group 1158.png" alt="blanja" border="0"/>
+    <img weight="120" src="./src/assets/image/Group 1158.png" alt="blanja" border="0"/>
   </div>
   <h3 align="center">Blanja</h3>
   <p align="center">
@@ -90,60 +90,60 @@ REACT_APP_API_KEY = [BACKEND_URL]
 
 <table>
  <tr>
-    <td><img width="350px" src="https://github.com/msuryasyahruli/blanja-web/blob/master/src/assets/screenshot/customerRegister.JPG"  border="0" border="0" alt="1" /></td>
-    <td> <img width="350px" src="https://github.com/msuryasyahruli/blanja-web/blob/master/src/assets/screenshot/sellerRegister.JPG" \ border="0"  border="0"  border="0"  alt="2" /></td>
+    <td><img width="350px" src="src/assets/screenshot/register.png"  border="0" border="0" alt="1" /></td>
+    <td> <img width="350px" src="src/assets/screenshot/login.png" \ border="0"  border="0"  border="0"  alt="2" /></td>
   </tr>
    <tr>
-    <td>Register as Customer</td>
-    <td>Register as Seller</td>
+    <td>Register</td>
+    <td>Login</td>
   </tr>
   <tr>
-    <td><img width="350px" src="https://github.com/msuryasyahruli/blanja-web/blob/master/src/assets/screenshot/customerLogin.JPG"  border="0" border="0" alt="1" /></td>
-    <td> <img width="350px" src="https://github.com/msuryasyahruli/blanja-web/blob/master/src/assets/screenshot/sellerLogin.JPG" \ border="0"  border="0"  border="0"  alt="2" /></td>
+    <td><img width="350px" src="src/assets/screenshot/home.png"  border="0" border="0" alt="1" /></td>
+    <td> <img width="350px" src="src/assets/screenshot/filter.png" \ border="0"  border="0"  border="0"  alt="2" /></td>
   </tr>
    <tr>
-    <td>Login as Customer</td>
-    <td>Login as Seller</td>
+    <td>Home</td>
+    <td>Filter</td>
   </tr>
    <tr>
-    <td><img width="350px" src="https://github.com/msuryasyahruli/blanja-web/blob/master/src/assets/screenshot/home.JPG"  border="0" border="0" alt="1" /></td>
-    <td> <img width="350px" src="https://github.com/msuryasyahruli/blanja-web/blob/master/src/assets/screenshot/detail.JPG" \ border="0"  border="0"  border="0"  alt="2" /></td>
+    <td><img width="350px" src="src/assets/screenshot/detail.png"  border="0" border="0" alt="1" /></td>
+    <td> <img width="350px" src="src/assets/screenshot/order.png" \ border="0"  border="0"  border="0"  alt="2" /></td>
   </tr>
    <tr>
-    <td>Home page</td>
-    <td>Detail product page</td>
+    <td>Detail product</td>
+    <td>Order product</td>
   </tr>
    <tr>
-    <td><img width="350px" src="https://github.com/msuryasyahruli/blanja-web/blob/master/src/assets/screenshot/customerProfile.JPG"  border="0" border="0" alt="1" /></td>
-    <td> <img width="350px" src="https://github.com/msuryasyahruli/blanja-web/blob/master/src/assets/screenshot/sellerProfileStore.JPG" \ border="0"  border="0"  border="0"  alt="2" /></td>
+    <td><img width="350px" src="src/assets/screenshot/checkout.png"  border="0" border="0" alt="1" /></td>
+    <td> <img width="350px" src="src/assets/screenshot/payment-menthod.png" \ border="0"  border="0"  border="0"  alt="2" /></td>
   </tr>
    <tr>
-    <td>Profile as Customer</td>
-    <td>Profile as Seller</td>
+    <td>Checkout product</td>
+    <td>Payment method</td>
   </tr>
    <tr>
-    <td><img width="350px" src="https://github.com/msuryasyahruli/blanja-web/blob/master/src/assets/screenshot/customerAddress.JPG"  border="0" border="0" alt="1" /></td>
-    <td> <img width="350px" src="https://github.com/msuryasyahruli/blanja-web/blob/master/src/assets/screenshot/sellerProfileProduct.JPG" \ border="0"  border="0"  border="0"  alt="2" /></td>
+    <td><img width="350px" src="src/assets/screenshot/profile.png"  border="0" border="0" alt="1" /></td>
+    <td> <img width="350px" src="src/assets/screenshot/store-profile.png" \ border="0"  border="0"  border="0"  alt="2" /></td>
   </tr>
    <tr>
-    <td>Address as Customer</td>
-    <td>Product as Seller</td>
+    <td>Profile</td>
+    <td>Store profile</td>
   </tr>
    <tr>
-    <td><img width="350px" src="https://github.com/msuryasyahruli/blanja-web/blob/master/src/assets/screenshot/customerOrder.JPG"  border="0" border="0" alt="1" /></td>
-    <td> <img width="350px" src="https://github.com/msuryasyahruli/blanja-web/blob/master/src/assets/screenshot/sellerProifleSellingProduct.JPG" \ border="0"  border="0"  border="0"  alt="2" /></td>
+    <td><img width="350px" src="src/assets/screenshot/shipping-address.png"  border="0" border="0" alt="1" /></td>
+    <td> <img width="350px" src="src/assets/screenshot/order-items.png" \ border="0"  border="0"  border="0"  alt="2" /></td>
   </tr>
    <tr>
-    <td>Orders as Customer</td>
-    <td>Selling as Seller</td>
+    <td>Shipping address</td>
+    <td>Orders items</td>
   </tr>
    <tr>
-    <td><img width="350px" src="https://github.com/msuryasyahruli/blanja-web/blob/master/src/assets/screenshot/orderBag.JPG"  border="0" border="0" alt="1" /></td>
-    <td> <img width="350px" src="https://github.com/msuryasyahruli/blanja-web/blob/master/src/assets/screenshot/checkout.JPG" \ border="0"  border="0"  border="0"  alt="2" /></td>
+    <td><img width="350px" src="src/assets/screenshot/store-products.png"  border="0" border="0" alt="1" /></td>
+    <td> <img width="350px" src="src/assets/screenshot/selling-product.png" \ border="0"  border="0"  border="0"  alt="2" /></td>
   </tr>
    <tr>
-    <td>Orders page</td>
-    <td>Checkout page</td>
+    <td>Store products</td>
+    <td>Selling product</td>
   </tr>
 </table>
 <!-- CONTRIBUTING -->
